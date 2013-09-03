@@ -15,10 +15,10 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		static $instance;
 		private $screen;
 
-		private $modules = array(
-			'combinednews',
-			'quickdraft',
-			'rightnow',
+		private $active_modules = array(
+			//'combinednews',
+			//'quickdraft',
+			//'rightnow',
 		);
 		
 		function __construct() {		
@@ -27,14 +27,14 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			add_action( 'admin_menu', array( $this , 'dash_add_menu' ) );
 			add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts' ) );
 			
-			foreach ( $this->modules as $module_slug ) include( plugin_dir_path( __FILE__ ) . $module_slug . '.php';
+			foreach ( $this->active_modules as $module_slug ) include( plugin_dir_path( __FILE__ ) . $module_slug . '.php';
 		}
 		
 		function enqueue_scripts() {
 			if ( get_current_screen()->base !== $this->screen )
 				return;
 
-			foreach ( $this->modules as $module_slug ) {
+			foreach ( $this->active_modules as $module_slug ) {
 				// JS
 				wp_enqueue_script( $module_slug . '-js', plugins_url( __FILE__ ) . '/js/' . $module_slug . '.js', array( 'jquery' ), self::version, true );
 				// CSS
