@@ -36,9 +36,9 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 
 			foreach ( $this->modules as $module_slug ) {
 				// JS
-				wp_enqueue_script( $module_slug . '-js', dirname(__FILE__) . '/js/' . $module_slug . '.js', array( 'jquery' ), self::version, true );
+				wp_enqueue_script( $module_slug . '-js', plugins_url( __FILE__ ) . '/js/' . $module_slug . '.js', array( 'jquery' ), self::version, true );
 				// CSS
-				wp_enqueue_style( $module_slug . '-css', dirname(__FILE__) . '/css/' . $module_slug . '.css', array(), self::version );
+				wp_enqueue_style( $module_slug . '-css', plugins_url( __FILE__ ) . '/css/' . $module_slug . '.css', array(), self::version );
 			}
 		}
 		
