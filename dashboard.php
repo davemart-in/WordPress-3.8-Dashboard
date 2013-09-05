@@ -17,17 +17,18 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 
 		private $active_modules = array(
 			//'combinednews',
-			//'quickdraft',
+			'quickdraft',
 			//'rightnow',
 		);
 		
 		function __construct() {		
 			self::$instance = $this;
 			
-			add_action( 'admin_menu', array( $this , 'dash_add_menu' ) );
+			//add_action( 'admin_menu', array( $this , 'dash_add_menu' ) );
 			add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts' ) );
 			
 			foreach ( $this->active_modules as $module_slug ) include plugin_dir_path( __FILE__ ) . $module_slug . '.php';
+			$this->screen = 'dashboard';
 		}
 		
 		function enqueue_scripts() {
@@ -36,12 +37,13 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 
 			foreach ( $this->active_modules as $module_slug ) {
 				// JS
-				wp_enqueue_script( $module_slug . '-js', plugins_url( __FILE__ ) . '/js/' . $module_slug . '.js', array( 'jquery' ), self::version, true );
+				wp_enqueue_script( $module_slug . '-js', plugins_url( '/js/' . $module_slug . '.js', __FILE__ ), array( 'jquery' ), self::version, true );
 				// CSS
-				wp_enqueue_style( $module_slug . '-css', plugins_url( __FILE__ ) . '/css/' . $module_slug . '.css', array(), self::version );
+				wp_enqueue_style( $module_slug . '-css', plugins_url( '/css/' . $module_slug . '.css', __FILE__ ), array(), self::version );
 			}
 		}
 		
+		/*
 		function dash_add_menu() {
 			$this->screen = add_dashboard_page( 'Dash', 'Dash', 'read', 'dash-dash', array( __CLASS__, 'dash_page' ) );
 		}
@@ -57,6 +59,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		</div><!-- .wrap -->
 		<?php
 		}
+		*/
 	}
 	new Plugin_Dashboard;
 }
