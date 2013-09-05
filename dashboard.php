@@ -27,7 +27,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			add_action( 'admin_menu', array( $this , 'dash_add_menu' ) );
 			add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts' ) );
 			
-			foreach ( $this->active_modules as $module_slug ) include( plugin_dir_path( __FILE__ ) . $module_slug . '.php';
+			foreach ( $this->active_modules as $module_slug ) include plugin_dir_path( __FILE__ ) . $module_slug . '.php';
 		}
 		
 		function enqueue_scripts() {
