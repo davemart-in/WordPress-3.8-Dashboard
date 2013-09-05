@@ -130,7 +130,6 @@ function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 			'order' => 'DESC'
 		) );
 		$drafts =& $drafts_query->posts;
-		var_dump( $drafts );
 	}
 
 	if ( $drafts && is_array( $drafts ) ) {
