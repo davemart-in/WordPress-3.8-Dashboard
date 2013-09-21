@@ -16,6 +16,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		private $screen;
 
 		private $active_modules = array(
+			'dashboard',
 			//'combinednews',
 			'quickdraft',
 			//'rightnow',
@@ -24,7 +25,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		function __construct() {		
 			self::$instance = $this;
 			
-			//add_action( 'admin_menu', array( $this , 'dash_add_menu' ) );
+			add_action( 'admin_menu', array( $this , 'dash_add_menu' ) );
 			add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts' ) );
 			
 			foreach ( $this->active_modules as $module_slug ) include plugin_dir_path( __FILE__ ) . $module_slug . '.php';
@@ -43,7 +44,6 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			}
 		}
 		
-		/*
 		function dash_add_menu() {
 			$this->screen = add_dashboard_page( 'Dash', 'Dash', 'read', 'dash-dash', array( __CLASS__, 'dash_page' ) );
 		}
@@ -52,14 +52,11 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		?>
 		<div class="wrap">
 
-			<?php screen_icon(); ?>
-
-			<h2><?php esc_html_e( 'Dash' ); ?></h2>
+			<h2><?php $words = array( 'Hola', 'Bonjour', 'Aloha', 'Ahoy There', "G'day", 'Hi There Beautiful', "It's Go Time", 'Break a Leg', 'Go For Broke', 'Keep Your Chin Up' ); echo esc_html( $words[ mt_rand( 0, count( $words) -1 ) ] ); ?></h2>
 
 		</div><!-- .wrap -->
 		<?php
 		}
-		*/
 	}
 	new Plugin_Dashboard;
 }
