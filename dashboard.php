@@ -52,7 +52,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		?>
 		<div class="wrap">
 
-			<h2><?php $words = array( 'Hola', 'Bonjour', 'Aloha', 'Ahoy There', "G'day", 'Hi There Beautiful', "It's Go Time", 'Break a Leg', 'Go For Broke', 'Keep Your Chin Up' ); echo esc_html( $words[ mt_rand( 0, count( $words) -1 ) ] ); ?></h2>
+			<h2><?php $words = array( 'Hola', 'Bonjour', 'Aloha', 'Ahoy There', "G'day", "It's Go Time", 'Break a Leg', 'Go For Broke' ); echo esc_html( $words[ mt_rand( 0, count( $words) -1 ) ] ); ?></h2>
 
 		</div><!-- .wrap -->
 		<?php
