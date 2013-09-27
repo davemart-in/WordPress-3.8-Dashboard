@@ -19,7 +19,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			'dashboard',
 			//'combinednews',
 			'quickdraft',
-			//'rightnow',
+			'rightnow',
 		);
 		
 		function __construct() {		
@@ -33,7 +33,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		}
 		
 		function enqueue_scripts() {
-			if ( get_current_screen()->base !== $this->screen )
+			if ( get_current_screen()->base !== $this->screen && get_current_screen()->base !== 'dashboard' )
 				return;
 
 			foreach ( $this->active_modules as $module_slug ) {
@@ -45,7 +45,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		}
 		
 		function dash_add_menu() {
-			$this->screen = add_dashboard_page( 'Dash', 'Dash', 'read', 'dash-dash', array( __CLASS__, 'dash_page' ) );
+			$this->screen = add_dashboard_page( 'Dash', 'Dash', 'read', 'dash-dash', array( $this, 'dash_page' ) );
 		}
 		
 		function dash_page() {
