@@ -1,20 +1,11 @@
 <?php
 
-// Remove the QuickPress widget from the dashboard
-add_action( 'wp_dashboard_setup', 'remove_quickpress_and_recent_drafts_dashboard_widgets' );
-
-function remove_quickpress_and_recent_drafts_dashboard_widgets() {
-	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
-	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
-}
-
 // Add the QuickDraft widget to the dashboard
 add_action( 'wp_dashboard_setup', 'add_quickdraft_dashboard_widget' );
 
 function add_quickdraft_dashboard_widget() {
-	if ( is_blog_admin() && current_user_can( 'edit_posts' ) ) { 
-		wp_add_dashboard_widget( 'dashboard_quick_draft', __( 'QuickDraft' ), 'wp_dashboard_quick_draft' );  
-	}   
+	if ( is_blog_admin() && current_user_can( 'edit_posts' ) )
+		add_meta_box('dashboard_quick_draft', __( 'Quick Draft' ), 'wp_dashboard_quick_draft', 'dashboard', 'side', 'high');
 }
 
 // The QuickDraft widget display and creation of drafts

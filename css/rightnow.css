@@ -2,11 +2,21 @@
 
 #dash-right-now .inside {
 	margin-bottom: 0;
+	overflow: hidden;
 	padding: 0;
 }
 
 #dash-right-now .main {
 	padding: 0 12px;
+}
+
+#dash-right-now .main p {
+	margin-top: 10px;
+}
+
+#dash-right-now ul,
+.mu-storage {
+	overflow: hidden;
 }
 
 #dash-right-now li {

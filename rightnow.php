@@ -38,14 +38,13 @@ function dash_new_dashboard_quota() {
 			<?php printf( '<a href="%1$s" title="%4$s" class="musublink">%2$sMB (%3$s%%) %5$s</a>', esc_url( admin_url( 'upload.php' ) ), number_format_i18n( $used, 2 ), $percentused, __('Manage Uploads'), __('Space Used') ); ?>
 		</li>
 	</ul>
-	<div style="clear:both;"></div>
 	</div>
 	<?php
 }
 
 function dash_add_new_right_now() {
 	remove_meta_box( 'dashboard_right_now', 'dashboard', 'side' );
-	wp_add_dashboard_widget( 'dash-right-now', 'New Right Now', 'dash_new_right_now' );
+	add_meta_box('dash-right-now', 'Site Content', 'dash_new_right_now', 'dashboard', 'normal', 'high');
 	remove_action( 'activity_box_end', 'wp_dashboard_quota' );
 	add_action( 'activity_box_end', 'dash_new_dashboard_quota' );
 }
@@ -97,7 +96,6 @@ function dash_new_right_now() {
 	do_action( 'rightnow_list_end' );
 	?>
 	</ul>
-	<div style="clear:both;"></div>
 	<p><?php printf( __('<b>WordPress %1$s</b> running %2$s theme.' ), get_bloginfo( 'version', 'display' ), $theme_name ); ?></p>
 	</div>
 

@@ -16,7 +16,6 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		private $screen;
 
 		private $active_modules = array(
-			'dashboard',
 			//'combinednews',
 			'quickdraft',
 			'rightnow',
@@ -25,13 +24,17 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		function __construct() {		
 			self::$instance = $this;
 			
-			add_action( 'admin_menu', array( $this , 'dash_add_menu' ) );
+			// Override dashboard temporarily
+			add_action( 'load-index.php', array( $this , 'override_dashboard' ) );
+			
+			// Load JS & CSS
 			add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts' ) );
 			
+			// Load new module files
 			foreach ( $this->active_modules as $module_slug ) include plugin_dir_path( __FILE__ ) . $module_slug . '.php';
 			$this->screen = 'dashboard';
 		}
-		
+
 		function enqueue_scripts() {
 			if ( get_current_screen()->base !== $this->screen && get_current_screen()->base !== 'dashboard' )
 				return;
@@ -44,19 +47,12 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			}
 		}
 		
-		function dash_add_menu() {
-			$this->screen = add_dashboard_page( 'Dash', 'Dash', 'read', 'dash-dash', array( $this, 'dash_page' ) );
-		}
-		
-		function dash_page() {
-		?>
-		<div class="wrap">
-
-			<h2><?php $words = array( 'Hola', 'Bonjour', 'Aloha', 'Ahoy There', "G'day", "It's Go Time", 'Break a Leg', 'Go For Broke' ); echo esc_html( $words[ mt_rand( 0, count( $words) -1 ) ] ); ?></h2>
-
-		</div><!-- .wrap -->
-		<?php
-		}
+		function override_dashboard() {
+			if ( get_current_screen()->in_admin( 'site' ) ) {
+				require dirname( __FILE__ ) . '/dashboard-override.php';
+				exit;
+			}
+  		}
 	}
 	new Plugin_Dashboard;
 }
