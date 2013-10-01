@@ -10,7 +10,7 @@
 
 if ( !class_exists( 'Plugin_Dashboard' ) ) {
 	class Plugin_Dashboard {
-		
+
 		const version = '0.1';
 		static $instance;
 		private $screen;
@@ -19,17 +19,18 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			//'combinednews',
 			'quickdraft',
 			'rightnow',
+			'activity'
 		);
-		
-		function __construct() {		
+
+		function __construct() {
 			self::$instance = $this;
-			
+
 			// Override dashboard temporarily
 			add_action( 'load-index.php', array( $this , 'override_dashboard' ) );
-			
+
 			// Load JS & CSS
 			add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts' ) );
-			
+
 			// Load new module files
 			foreach ( $this->active_modules as $module_slug ) include plugin_dir_path( __FILE__ ) . $module_slug . '.php';
 			$this->screen = 'dashboard';
@@ -46,7 +47,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 				wp_enqueue_style( $module_slug . '-css', plugins_url( '/css/' . $module_slug . '.css', __FILE__ ), array(), self::version );
 			}
 		}
-		
+
 		function override_dashboard() {
 			if ( get_current_screen()->in_admin( 'site' ) ) {
 				require dirname( __FILE__ ) . '/dashboard-override.php';

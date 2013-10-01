@@ -1,0 +1,11 @@
+#future-posts .show-more {
+	float: right;
+}
+
+#future-posts ul {
+	clear: both;
+}
+
+#future-posts ul span {
+	color: #aaa;
+}
