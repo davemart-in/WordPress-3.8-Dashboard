@@ -1,0 +1,26 @@
+#dashboard_quick_draft .inside {
+	padding: 0 0 12px;
+}
+
+#dashboard_quick_draft form,
+#dashboard_quick_draft .drafts,
+#dashboard_quick_draft .easy-blogging {
+	padding: 0 12px 10px;
+}
+
+#dashboard_quick_draft div.updated {
+	margin-bottom: 10px;
+}
+
+#dashboard_quick_draft form {
+	border-bottom: 1px solid #eee;
+}
+
+#dashboard_quick_draft .drafts .view-all {
+	float: right;
+	margin: 0;
+}
+
+#dashboard_quick_draft .drafts .title {
+	font-size: 14px;
+}

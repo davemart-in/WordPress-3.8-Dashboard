@@ -113,12 +113,12 @@ function wp_dashboard_quick_draft() {
 function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 	if ( !$drafts ) {
 		$drafts_query = new WP_Query( array(
-			'post_type' => 'post',
-			'post_status' => 'draft',
-			'author' => $GLOBALS['current_user']->ID,
+			'post_type'      => 'post',
+			'post_status'    => 'draft',
+			'author'         => $GLOBALS['current_user']->ID,
 			'posts_per_page' => 5,
-			'orderby' => 'modified',
-			'order' => 'DESC'
+			'orderby'        => 'modified',
+			'order'          => 'DESC'
 		) );
 		$drafts =& $drafts_query->posts;
 	}
@@ -134,12 +134,14 @@ function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 			$list[] = $item;
 		}
 ?>
-	<ul>
-		<li><?php echo join( "</li>\n<li>", $list ); ?></li>
-	</ul>
-	<p class="textright"><a href="edit.php?post_status=draft" ><?php _e('View all'); ?></a></p>
-<?php
-	} else {
-		_e('There are no drafts at the moment');
-	}
+	<div class="drafts">
+		<p class="view-all"><a href="edit.php?post_status=draft" ><?php _e('View all'); ?></a></p>
+		<p class="title"><?php _e('Drafts'); ?></p>
+		<ul id="draft-list">
+			<li><?php echo join( "</li>\n<li>", $list ); ?></li>
+		</ul>
+	</div>
+<?php } else { ?>
+	<div class="drafts"><p><?php _e('There are no drafts at the moment'); ?></p></div>
+<?php }
 }
