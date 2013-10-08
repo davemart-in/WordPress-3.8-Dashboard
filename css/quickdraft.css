@@ -5,16 +5,95 @@
 #dashboard_quick_draft form,
 #dashboard_quick_draft .drafts,
 #dashboard_quick_draft .easy-blogging {
-	padding: 0 12px 10px;
+	margin: 0 12px 10px;
 }
 
 #dashboard_quick_draft div.updated {
 	margin-bottom: 10px;
+	border: 1px solid #eee;
+	border-width: 1px 1px 1px 0;
 }
 
 #dashboard_quick_draft form {
 	border-bottom: 1px solid #eee;
 }
+
+
+/* Form styling */
+
+#dashboard_quick_draft textarea {
+	resize: vertical;
+}
+
+/* @todo: Position media buttons? Ignore media buttons? */
+.wp-media-buttons,
+#publishing-action,
+p.submit [type="reset"] {
+	display: none;
+}
+
+.initial-form #title-wrap, 
+.initial-form #tags-input-wrap,
+.initial-form p.submit {
+	display: none;
+}
+
+.input-text-wrap,
+.textarea-wrap {
+	position: relative;
+}
+.input-text-wrap .prompt,
+.textarea-wrap .prompt {
+	position: absolute;
+}
+#title-wrap #title-prompt-text,
+.textarea-wrap #content-prompt-text,
+#tags-input-wrap #tags-input-prompt-text {
+	color: #BBB;
+}
+#title-wrap #title-prompt-text {
+	font-size: 1.1em;
+	padding: 7px 8px;
+}
+
+.textarea-wrap #content-prompt-text {
+	font-size: 1.1em;
+	padding: 10px 8px;
+}
+
+#tags-input-wrap {
+	margin-right: 95px;
+}
+#tags-input-wrap #tags-input-prompt-text,
+#tags-input-wrap #tags-input {
+	padding: 4px 6px;
+	font-size: 1em;
+	line-height: 18px;
+}
+
+#title-wrap #title {
+	margin: 0 0 10px;
+}
+.textarea-wrap textarea {
+	margin: 0 0 10px;
+	padding: 6px 7px;
+}
+#tags-input-wrap #tags-input {
+	margin: 0 0 10px;
+	padding: 4px 6px;
+}
+
+#dashboard-widgets .postbox form .submit {
+	margin: -39px 0;
+	float: right;
+}
+
+input#save-post {
+	float: right;
+}
+
+
+/* Drafts list */
 
 #dashboard_quick_draft .drafts .view-all {
 	float: right;
@@ -23,4 +102,8 @@
 
 #dashboard_quick_draft .drafts .title {
 	font-size: 14px;
+}
+
+#dashboard_quick_draft .drafts abbr {
+	border: none;
 }

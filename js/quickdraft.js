@@ -14,7 +14,8 @@ var quickPressLoad;
 	
 				$.post( t.attr( 'action' ), t.serializeArray(), function( data ) {
 					// Replace the form, and prepend the published post.
-					$('#quick-press').html( $(data).filter('#quick-press').html() );
+					$('#quick-press').html( $(data).filter('#quick-press').html() ).removeClass('initial-form');
+					$('#quick-press').find('#save-post').addClass('button-primary');
 					$('#quick-press').prepend( $(data).filter('div.updated') );
 					$(data).find('li').prependTo("#draft-list");
 					
@@ -27,7 +28,7 @@ var quickPressLoad;
 	
 		$('#publish').click( function() { act.val( 'post-quickpress-publish' ); } );
 
-		$('#title, #tags-input').each( function() {
+		$('#title, #tags-input, #content').each( function() {
 			var input = $(this), prompt = $('#' + this.id + '-prompt-text');
 
 			if ( '' === this.value )
@@ -47,8 +48,11 @@ var quickPressLoad;
 				prompt.addClass('screen-reader-text');
 			});
 		});
+		
+		
 
 		$('#quick-press').on( 'click focusin', function() {
+			$("#title-wrap, #tags-input-wrap, p.submit").show(200);
 			wpActiveEditor = 'content';
 		});
 	};

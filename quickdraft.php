@@ -58,7 +58,7 @@ function wp_dashboard_quick_draft() {
 	}
 ?>
 
-	<form name="post" action="<?php echo esc_url( admin_url( 'post.php' ) ); ?>" method="post" id="quick-press">
+	<form name="post" action="<?php echo esc_url( admin_url( 'post.php' ) ); ?>" method="post" id="quick-press" class="initial-form">
 		<div class="input-text-wrap" id="title-wrap">
 			<label class="screen-reader-text prompt" for="title" id="title-prompt-text"><?php _e( 'Enter title here' ); ?></label>
 			<input type="text" name="post_title" id="title" autocomplete="off" value="<?php echo esc_attr( $post->post_title ); ?>" />
@@ -71,7 +71,7 @@ function wp_dashboard_quick_draft() {
 		<?php endif; ?>
 
 		<div class="textarea-wrap">
-			<label class="screen-reader-text" for="content"><?php _e( 'Content' ); ?></label>
+			<label class="screen-reader-text prompt" for="content" id="content-prompt-text"><?php _e( "What's on your mind?" ); ?></label>
 			<textarea name="content" id="content" class="mceEditor" rows="3" cols="15"><?php echo esc_textarea( $post->post_content ); ?></textarea>
 		</div>
 
@@ -91,16 +91,11 @@ function wp_dashboard_quick_draft() {
 		</div>
 
 		<p class="submit">
-			<span id="publishing-action">
-				<input type="submit" name="publish" id="publish" accesskey="p" class="button-primary" value="<?php current_user_can('publish_posts') ? esc_attr_e('Publish') : esc_attr_e('Submit for Review'); ?>" />
-				<span class="spinner"></span>
-			</span>
 			<input type="hidden" name="action" id="quickpost-action" value="post-quickpress-save" />
 			<input type="hidden" name="post_ID" value="<?php echo $post_ID; ?>" />
 			<input type="hidden" name="post_type" value="post" />
 			<?php wp_nonce_field('add-post'); ?>
-			<?php submit_button( __( 'Save Draft' ), 'button', 'save', false, array( 'id' => 'save-post' ) ); ?>
-			<input type="reset" value="<?php esc_attr_e( 'Reset' ); ?>" class="button" />
+			<?php submit_button( __( 'Save Draft' ), 'primary', 'save', false, array( 'id' => 'save-post' ) ); ?>
 			<br class="clear" />
 		</p>
 
@@ -128,7 +123,7 @@ function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 		foreach ( $drafts as $draft ) {
 			$url = get_edit_post_link( $draft->ID );
 			$title = _draft_or_post_title( $draft->ID );
-			$item = "<h4><a href='$url' title='" . sprintf( __( 'Edit &#8220;%s&#8221;' ), esc_attr( $title ) ) . "'>" . esc_html($title) . "</a> <abbr title='" . get_the_time(__('Y/m/d g:i:s A'), $draft) . "'>" . get_the_time( get_option( 'date_format' ), $draft ) . '</abbr></h4>';
+			$item = '<h4><a href="'.$url.'" title="' . sprintf( __( 'Edit &#8220;%s&#8221;' ), esc_attr( $title ) ) . '">' . esc_html($title) . '</a> <time datetime="' . get_the_time( 'c', $draft) . '">' . get_the_time( get_option( 'date_format' ), $draft ) . '</time></h4>';
 			if ( $the_content = wp_trim_words( $draft->post_content, 10 ) )
 				$item .= '<p>' . $the_content . '</p>';
 			$list[] = $item;
