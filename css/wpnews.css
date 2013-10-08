@@ -1,0 +1,36 @@
+#dashboard_rss .inside {
+	padding: 0 0 12px;
+}
+
+#dashboard_rss .widget-loading,
+#dashboard_rss .dashboard-widget-control-form {
+	padding: 0 12px 12px;
+}
+
+.rss-widget {
+	border-bottom: 1px solid #eee;
+	margin-bottom: 12px;
+	padding: 0 12px 12px;
+}
+
+.rss-widget:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.rss-widget a {
+	font-weight: normal;
+}
+
+.rss-widget span {
+	color: #999;
+}
+
+.dashboard-widget-control-form {
+	overflow: hidden;
+}
+
+body #dashboard-widgets .postbox form .submit {
+	margin: 0;
+}

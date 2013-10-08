@@ -16,7 +16,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 		private $screen;
 
 		private $active_modules = array(
-			//'combinednews',
+			'wpnews',
 			'quickdraft',
 			'rightnow',
 			'activity'
