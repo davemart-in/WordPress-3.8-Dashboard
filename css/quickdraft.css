@@ -80,7 +80,7 @@ input#save-post {
 
 #dashboard_quick_draft .drafts .view-all {
 	float: right;
-	margin: 0;
+	margin-top: 12px;
 }
 
 #dashboard_quick_draft .drafts .title {
