@@ -106,7 +106,5 @@ function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 			<li><?php echo join( "</li>\n<li>", $list ); ?></li>
 		</ul>
 	</div>
-<?php } else { ?>
-	<div class="drafts"><p><?php _e("You have yet to add any drafts."); ?></p></div>
 <?php }
 }

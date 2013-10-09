@@ -15,7 +15,6 @@
 }
 
 #dashboard_quick_draft form {
-	border-bottom: 1px solid #eee;
 	overflow: hidden;
 }
 
@@ -53,9 +52,10 @@
 	padding: 10px 8px;
 }
 
-#title-wrap #title {
-	margin: 0 0 10px;
+#description-wrap {
+	margin-top: 12px;
 }
+
 .textarea-wrap textarea {
 	margin: 0 0 10px;
 	padding: 6px 7px;
@@ -72,6 +72,10 @@ input#save-post {
 
 
 /* Drafts list */
+
+#dashboard_quick_draft .drafts {
+	border-bottom: 1px solid #eee;
+}
 
 #dashboard_quick_draft .drafts .view-all {
 	float: right;
