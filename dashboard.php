@@ -19,7 +19,8 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			'wpnews',
 			'quickdraft',
 			'rightnow',
-			'activity'
+			'activity',
+			'dash-rwd'
 		);
 
 		function __construct() {

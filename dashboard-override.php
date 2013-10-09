@@ -32,11 +32,6 @@ if ( wp_is_mobile() )
 	wp_enqueue_script( 'jquery-touch-punch' );
 
 $parent_file = 'index.php';
-
-if ( is_user_admin() ) 
-	add_screen_option('layout_columns', array('max' => 4, 'default' => 1) ); 
-else 
-	add_screen_option('layout_columns', array('max' => 4, 'default' => 2) ); 
  
 $help = '<p>' . __( 'Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab in the upper corner.' ) . '</p>';
  
@@ -61,7 +56,7 @@ $screen->add_help_tab( array(
 ) );
  
 $help  = '<p>' . __('You can use the following controls to arrange your Dashboard screen to suit your workflow. This is true on most other administration screens as well.') . '</p>';
-$help .= '<p>' . __('<strong>Screen Options</strong> - Use the Screen Options tab to choose which Dashboard boxes to show, and how many columns to display.') . '</p>';
+$help .= '<p>' . __('<strong>Screen Options</strong> - Use the Screen Options tab to choose which Dashboard boxes to show.') . '</p>';
 $help .= '<p>' . __('<strong>Drag and Drop</strong> - To rearrange the boxes, drag and drop by clicking on the title bar of the selected box and releasing when you see a gray dotted-line rectangle appear in the location you want to place the box.') . '</p>';
 $help .= '<p>' . __('<strong>Box Controls</strong> - Click the title bar of the box to expand or collapse it. In addition, some boxes have configurable content, and will show a &#8220;Configure&#8221; link in the title bar if you hover over it.') . '</p>';
  
