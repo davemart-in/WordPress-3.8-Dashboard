@@ -74,7 +74,8 @@ input#save-post {
 /* Drafts list */
 
 #dashboard_quick_draft .drafts {
-	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+	margin-top: 12px;
 }
 
 #dashboard_quick_draft .drafts .view-all {
