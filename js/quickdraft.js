@@ -12,6 +12,7 @@
 			$.post( t.attr( 'action' ), t.serializeArray(), function( data ) {
 				// Replace the form, and prepend the published post.
 				$('#dashboard_quick_draft .inside').html( data );
+				$('#quick-press').removeClass('initial-form');
 				quickPressLoad();
 				highlightLatestPost();
 				$('#title').focus();
