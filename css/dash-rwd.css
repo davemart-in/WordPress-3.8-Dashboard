@@ -20,7 +20,7 @@
 }
 
 /* two columns on the dash */
-@media only screen and (min-width: 800px) and (max-width: 1200px) {
+@media only screen and (min-width: 800px) and (max-width: 1199px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 49.5%;
 	}
@@ -40,35 +40,24 @@
 	}
 }
 
-/* one column on the post write/edit screen */
-@media only screen and (max-width: 850px) {
-	#poststuff {
-		min-width: 0;
+/* three columns on the dash */
+@media only screen and (min-width: 1200px) and (max-width: 1800px) {
+	#wpbody-content #dashboard-widgets .postbox-container {
+		width: 33.5%;
 	}
 
-	#wpbody-content #poststuff #post-body {
-		margin: 0;
+	#wpbody-content #dashboard-widgets #postbox-container-1 {
+		width: 33%;
 	}
 
-	#wpbody-content #post-body.columns-2 #postbox-container-1 {
-		margin-right: 0;
-		width: 100%;
-	}
+	#wpbody-content #dashboard-widgets #postbox-container-3,
+	#wpbody-content #dashboard-widgets #postbox-container-4 {
+		float: right;
+	}  
 
-	#poststuff #postbox-container-1 .empty-container,
-	#poststuff #postbox-container-1 #side-sortables:empty {
+	#dashboard-widgets #postbox-container-4 .empty-container {
 		border: 0 none;
 		height: 0;
 		min-height: 0;
-	}
-
-	#poststuff #post-body.columns-2 #side-sortables {
-		min-height: 0;
-	}
-
-	/* hide the radio buttons for column prefs */
-	.screen-layout,
-	.columns-prefs {
-		display: none;
 	}
 }
