@@ -14,6 +14,7 @@
 				$('#dashboard_quick_draft .inside').html( data );
 				quickPressLoad();
 				highlightLatestPost();
+				$('#title').focus();
 			});
 			
 			function highlightLatestPost () {
