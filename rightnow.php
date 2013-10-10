@@ -96,7 +96,7 @@ function dash_new_right_now() {
 	do_action( 'rightnow_list_end' );
 	?>
 	</ul>
-	<p><?php printf( __('<strong>WordPress %1$s</strong> running %2$s theme.' ), get_bloginfo( 'version', 'display' ), $theme_name ); ?></p>
+	<p><?php printf( __('WordPress %1$s running %2$s theme.' ), get_bloginfo( 'version', 'display' ), $theme_name ); ?></p>
 	</div>
 
 	<?php 

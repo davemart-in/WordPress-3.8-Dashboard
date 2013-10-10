@@ -91,7 +91,7 @@ function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 			
 			$url = get_edit_post_link( $draft->ID );
 			$title = _draft_or_post_title( $draft->ID );
-			$item = '<h4><a href="'.$url.'" title="' . sprintf( __( 'Edit &#8220;%s&#8221;' ), esc_attr( $title ) ) . '">' . esc_html($title) . '</a> <time datetime="' . get_the_time( 'c', $draft) . '">' . get_the_time( get_option( 'date_format' ), $draft ) . '</time></h4>';
+			$item = '<a href="'.$url.'" title="' . sprintf( __( 'Edit &#8220;%s&#8221;' ), esc_attr( $title ) ) . '">' . esc_html($title) . '</a> <time datetime="' . get_the_time( 'c', $draft) . '">' . get_the_time( get_option( 'date_format' ), $draft ) . '</time>';
 			if ( $the_content = wp_trim_words( $draft->post_content, 10 ) )
 				$item .= '<p>' . $the_content . '</p>';
 			$list[] = $item;

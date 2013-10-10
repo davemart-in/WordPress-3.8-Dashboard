@@ -20,7 +20,7 @@
 }
 
 /* two columns on the dash */
-@media only screen and (min-width: 800px) and (max-width: 1199px) {
+@media only screen and (min-width: 800px) and (max-width: 1299px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 49.5%;
 	}
@@ -41,7 +41,7 @@
 }
 
 /* three columns on the dash */
-@media only screen and (min-width: 1200px) and (max-width: 1800px) {
+@media only screen and (min-width: 1300px) and (max-width: 1800px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 33.5%;
 	}
@@ -60,4 +60,17 @@
 		height: 0;
 		min-height: 0;
 	}
+}
+
+.metabox-holder .postbox-container .empty-container {
+	border: none;
+}
+
+#dashboard-widgets-wrap .columns-3 #postbox-container-4 .empty-container {
+	border: none !important;
+}
+
+.postbox-container,
+.meta-box-sortables {
+	min-height: 245px;
 }
