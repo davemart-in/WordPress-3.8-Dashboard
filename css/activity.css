@@ -1,11 +1,56 @@
-#future-posts .show-more {
+#dashboard_activity .inside {
+	padding: 0;
+	margin: 0;
+}
+
+#future-posts .show-more,
+#published-posts .show-more {
 	float: right;
 }
 
-#future-posts ul {
+#future-posts ul,
+#published-posts ul {
 	clear: both;
 }
 
-#future-posts ul span {
+#future-posts li,
+#published-posts li {
+	overflow: hidden;
+}
+
+#future-posts ul span,
+#published-posts ul span {
 	color: #aaa;
+	float: left;
+	margin-right: 8px;
+	min-width: 150px;
+}
+
+.activity-block {
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+	padding: 12px 12px 0;
+}
+
+.activity-block:last-child {
+	border-bottom: none;
+	padding-bottom: 10px;
+}
+
+.activity-block .subsubsub li {
+	color: #ddd;
+}
+
+#the-comment-list .comment {
+	border-left: 4px solid #fff;
+}
+
+#the-comment-list .unapproved {
+	background: none;
+	border-left: 4px solid #f4f290;
+}
+
+#the-comment-list .alternate, 
+#the-comment-list .alt {
+	background: none;
 }

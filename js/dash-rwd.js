@@ -14,9 +14,11 @@ jQuery(document).ready(function ($) {
 		$(event.target).find(emptyContainers).css('border', '3px dashed #CCCCCC');
 	});
 });
+
 jQuery(window).resize( _.debounce( function(){
 	updateColumnCount();
 }, 50) );
+
 function updateColumnCount() {
 	var cols = 1,
 		windowWidth = parseInt(jQuery(window).width());

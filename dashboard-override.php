@@ -18,6 +18,8 @@ remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
 remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
 remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
 remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );
+// Remove Recent Comments
+remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
  
 wp_enqueue_script( 'dashboard' );
 if ( current_user_can( 'edit_theme_options' ) )
