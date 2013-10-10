@@ -29,6 +29,10 @@
 	overflow: hidden;
 }
 
+.dashboard-widget-control-form p {
+	margin-top: 0;
+}
+
 body #dashboard-widgets .postbox form .submit {
-	margin: 0 0 12px;
+	margin: 0;
 }

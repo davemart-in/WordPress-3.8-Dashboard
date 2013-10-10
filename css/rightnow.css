@@ -11,10 +11,14 @@
 }
 
 #dash-right-now .main p {
-	margin-top: 10px;
+	margin-top: 0;
 }
 
-#dash-right-now ul,
+#dash-right-now ul {
+	margin: 0;
+	overflow: hidden;
+}
+
 .mu-storage {
 	overflow: hidden;
 }
