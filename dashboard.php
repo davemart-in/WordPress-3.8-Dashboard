@@ -33,7 +33,11 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts' ) );
 
 			// Load new module files
-			foreach ( $this->active_modules as $module_slug ) include plugin_dir_path( __FILE__ ) . $module_slug . '.php';
+			foreach ( $this->active_modules as $module_slug ) {
+				$module = plugin_dir_path( __FILE__ ) . $module_slug . '.php';
+				if ( file_exists( $module ) )
+					include $module;
+			}
 			$this->screen = 'dashboard';
 		}
 
