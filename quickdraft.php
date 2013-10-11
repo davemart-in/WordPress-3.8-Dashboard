@@ -5,7 +5,14 @@ add_action( 'wp_dashboard_setup', 'add_quickdraft_dashboard_widget' );
 
 function add_quickdraft_dashboard_widget() {
 	if ( is_blog_admin() && current_user_can( 'edit_posts' ) )
-		add_meta_box('dashboard_quick_draft', __( 'Quick Draft' ), 'wp_dashboard_quick_draft', 'dashboard', 'side', 'high');
+		add_meta_box(
+		'dashboard_quick_draft',
+		__( 'Quick Draft' ),
+		'wp_dashboard_quick_draft',
+		'dashboard',
+		'side',
+		'high'
+	);
 }
 
 add_action( 'admin_post_new-quickdraft-post', 'dashboard_plugin_quickdraft_admin_post' );
@@ -25,7 +32,7 @@ function wp_dashboard_quick_draft() {
 	if ( $last_post_id ) {
 		$post = get_post( $last_post_id );
 		if ( empty( $post ) || $post->post_status != 'auto-draft' ) { // auto-draft doesn't exists anymore
-			$post = get_default_post_to_edit('post', true);
+			$post = get_default_post_to_edit( 'post', true );
 			update_user_option( get_current_user_id(), 'dashboard_quick_press_last_post_id', (int) $post->ID ); // Save post_ID
 		} else {
 			$post->post_title = ''; // Remove the auto draft title
@@ -56,7 +63,7 @@ function wp_dashboard_quick_draft() {
 			<input type="hidden" name="action" id="quickpost-action" value="new-quickdraft-post" />
 			<input type="hidden" name="post_ID" value="<?php echo $post_ID; ?>" />
 			<input type="hidden" name="post_type" value="post" />
-			<?php wp_nonce_field('add-post'); ?>
+			<?php wp_nonce_field( 'add-post' ); ?>
 			<?php submit_button( __( 'Save Draft' ), 'primary', 'save', false, array( 'id' => 'save-post' ) ); ?>
 			<br class="clear" />
 		</p>
@@ -99,7 +106,7 @@ function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 ?>
 	<div class="drafts">
 		<?php if ( 3 < count($drafts) ) { ?>
-		<p class="view-all"><a href="edit.php?post_status=draft" ><?php _e('View all'); ?></a></p>
+		<p class="view-all"><a href="edit.php?post_status=draft" ><?php _e( 'View all' ); ?></a></p>
 		<?php } ?>
 		<h4><?php _e('Drafts'); ?></h4>
 		<ul id="draft-list">

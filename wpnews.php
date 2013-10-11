@@ -7,67 +7,72 @@ function add_wpnews_dashboard_widget() {
 		// Note it would be ideal to have this loaded by default in the right column
 		// Currently there is no way to set a $location arg in wp_add_dashboard_widget()
 		// Would love to add that in core when merging this in.
-		wp_add_dashboard_widget( 'dashboard_rss', __( 'WordPress News' ), 'wp_dashboard_rss', 'wp_dashboard_news_feed_control' );
+		wp_add_dashboard_widget(
+			'dashboard_rss',
+			__( 'WordPress News' ),
+			'wp_dashboard_rss',
+			'wp_dashboard_news_feed_control'
+		);
 }
 
 function wp_dashboard_default_feeds() {
 	return array(
 		'news'   => array(
-			'link' => apply_filters( 'dashboard_primary_link', __( 'http://wordpress.org/news/' ) ),
-			'url' => apply_filters( 'dashboard_primary_feed', __( 'http://wordpress.org/news/feed/' ) ),
-			'title' => '',
-			'items' => 1,
+			'link'         => apply_filters( 'dashboard_primary_link', __( 'http://wordpress.org/news/' ) ),
+			'url'          => apply_filters( 'dashboard_primary_feed', __( 'http://wordpress.org/news/feed/' ) ),
+			'title'        => '',
+			'items'        => 1,
 			'show_summary' => 1,
-			'show_author' => 0,
-			'show_date' => 1,
+			'show_author'  => 0,
+			'show_date'    => 1,
 		), 
 		'planet' => array(
-			'link' => apply_filters( 'dashboard_secondary_link', __( 'http://planet.wordpress.org/' ) ),
-			'url' => apply_filters( 'dashboard_secondary_feed', __( 'http://planet.wordpress.org/feed/' ) ),
-			'title' => '',
-			'items' => 3,
+			'link'         => apply_filters( 'dashboard_secondary_link', __( 'http://planet.wordpress.org/' ) ),
+			'url'          => apply_filters( 'dashboard_secondary_feed', __( 'http://planet.wordpress.org/feed/' ) ),
+			'title'        => '',
+			'items'        => 3,
 			'show_summary' => 0,
-			'show_author' => 0,
-			'show_date' => 0,
+			'show_author'  => 0,
+			'show_date'    => 0,
 		), 
 		'plugins' => array(
-			'link' => '',
-			'url' => array(
-				'popular' => 'http://wordpress.org/plugins/rss/browse/popular/',
-				'new' => 'http://wordpress.org/plugins/rss/browse/new/'
+			'link'         => '',
+			'url'          => array(
+					'popular' => 'http://wordpress.org/plugins/rss/browse/popular/',
+					'new'     => 'http://wordpress.org/plugins/rss/browse/new/'
 			),
-			'title' => '',
-			'items' => 1,
+			'title'        => '',
+			'items'        => 1,
 			'show_summary' => 0,
-			'show_author' => 0,
-			'show_date' => 0,
+			'show_author'  => 0,
+			'show_date'    => 0,
 		)
 	);
 }
 
 function wp_dashboard_rss() {
 	$default_feeds = wp_dashboard_default_feeds();
-	
+
 	$widget_options = get_option( 'dashboard_widget_options' );
-	
+
 	if ( !$widget_options || !is_array($widget_options) )
 		$widget_options = array();
-	
+
 	if ( ! isset( $widget_options['dashboard_rss'] ) ) {
 		$widget_options['dashboard_rss'] = $default_feeds;
 		update_option( 'dashboard_widget_options', $widget_options );
 	}
-		
+
 	foreach( $default_feeds as $key => $value ) {
 		$default_urls[] = $value['url'];
 	}
-	
+
 	wp_dashboard_cached_rss_widget( 'dashboard_rss', 'wp_dashboard_news_output', $default_urls );
 }
 
 function wp_dashboard_news_output() {
 	$widgets = get_option( 'dashboard_widget_options' );
-	
+
 	foreach( $widgets['dashboard_rss'] as $type => $args ) {
 		$args['type'] = $type;
 		echo '<div class="rss-widget">';
@@ -77,7 +82,7 @@ function wp_dashboard_news_output() {
 }
 
 function wp_widget_news_output( $rss, $args = array() ) {
-	
+
 	// Regular RSS feeds
 	if ( isset( $args['type'] ) && 'plugins' != $args['type'] ) 	
 		return wp_widget_rss_output( $rss, $args );
@@ -90,10 +95,13 @@ function wp_widget_news_output( $rss, $args = array() ) {
 		$plugin_slugs = array_keys( get_plugins() );
 		set_transient( 'plugin_slugs', $plugin_slugs, DAY_IN_SECONDS );
 	}
-	
+
 	echo '<ul>';
-	
-	foreach ( array( 'popular' => __('Popular Plugin'), 'new' => __('Newest Plugin') ) as $feed => $label ) {
+
+	foreach ( array(
+		'popular' => __( 'Popular Plugin' ),
+		'new'     => __( 'Newest Plugin' )
+	) as $feed => $label ) {
 		if ( is_wp_error($$feed) || !$$feed->get_item_quantity() )
 			continue;
 
@@ -140,14 +148,14 @@ function wp_widget_news_output( $rss, $args = array() ) {
 
 		$title = esc_html( $item->get_title() );
 
-		$description = esc_html( strip_tags(@html_entity_decode($item->get_description(), ENT_QUOTES, get_option('blog_charset'))) );
+		$description = esc_html( strip_tags( @html_entity_decode( $item->get_description(), ENT_QUOTES, get_option( 'blog_charset' ) ) ) );
 
 		$ilink = wp_nonce_url('plugin-install.php?tab=plugin-information&plugin=' . $slug, 'install-plugin_' . $slug) . '&amp;TB_iframe=true&amp;width=600&amp;height=800';
 
 		echo "<li><span>$label:</span> <a href='$link'>$title</a></h5>&nbsp;<span>(<a href='$ilink' class='thickbox' title='$title'>" . __( 'Install' ) . "</a>)</span></li>";
 
 		$$feed->__destruct();
-		unset($$feed);
+		unset( $$feed );
 	}
 	
 	echo '</ul>';
@@ -174,7 +182,14 @@ function wp_dashboard_news_control( $widget_id, $form_inputs = array() ) {
 		$options['number'] = $name;
 		
 		if ( 'dashboard_rss' == $widget_id )
-			$form_inputs = array( 'title' => false, 'title' => false, 'show_summary' => false, 'show_author' => false, 'show_date' => false, 'items' => false );
+			$form_inputs = array(
+				'title'        => false,
+				'title'        => false,
+				'show_summary' => false,
+				'show_author'  => false,
+				'show_date'    => false,
+				'items'        => false
+		);
 		
 		if ( 'plugins' == $name )
 			$form_inputs['url'] = false;
@@ -202,4 +217,4 @@ function wp_dashboard_news_widget() {
 	wp_dashboard_rss();
 	wp_die();
 }
-add_action('wp_ajax_dashboard_news_widget', 'wp_dashboard_news_widget');
+add_action( 'wp_ajax_dashboard_news_widget', 'wp_dashboard_news_widget' );

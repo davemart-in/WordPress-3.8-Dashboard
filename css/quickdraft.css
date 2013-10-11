@@ -5,6 +5,7 @@
 #dashboard_quick_draft form {
 	padding: 0 12px 1px 12px;
 }
+
 #dashboard_quick_draft .drafts,
 #dashboard_quick_draft .easy-blogging {
 	padding: 8px 12px 0;
@@ -43,14 +44,17 @@
 .textarea-wrap {
 	position: relative;
 }
+
 .input-text-wrap .prompt,
 .textarea-wrap .prompt {
 	position: absolute;
 }
+
 #title-wrap #title-prompt-text,
 .textarea-wrap #content-prompt-text {
 	color: #BBB;
 }
+
 #title-wrap #title-prompt-text {
 	font-size: 1.1em;
 	padding: 7px 8px;
@@ -125,6 +129,7 @@ form.initial-form.quickpress-open input#title {
 #draft-list li {
 	margin-bottom: 1em;
 }
+
 #draft-list li time {
 	display: block;
 	color: #bbb;

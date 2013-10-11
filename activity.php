@@ -3,7 +3,14 @@
 // add the `Activity` widget to the dashboard
 add_action( 'wp_dashboard_setup', 'add_activity_dashboard_widget' );
 function add_activity_dashboard_widget() {
-	add_meta_box( 'dashboard_activity', __( 'Activity' ), 'wp_dashboard_activity', 'dashboard', 'normal', 'high' );
+	add_meta_box(
+		'dashboard_activity',
+		__( 'Activity' ),
+		'wp_dashboard_activity',
+		'dashboard',
+		'normal',
+		'high'
+	);
 }
 
 // callback function for `Activity` widget
@@ -13,17 +20,17 @@ function wp_dashboard_activity() {
 
 	$future_posts = dash_show_published_posts( array(
 		'display' => 2,
-		'max' => 5,
-		'status' => 'future',
-		'title' => __( 'Publishing Soon' ),
-		'id' => 'future-posts',
+		'max'     => 5,
+		'status'  => 'future',
+		'title'   => __( 'Publishing Soon' ),
+		'id'      => 'future-posts',
 	) );
 	$recent_posts = dash_show_published_posts( array(
 		'display' => 2,
-		'max' => 5,
-		'status' => 'publish',
-		'title' => __( 'Recently Published' ),
-		'id' => 'published-posts',
+		'max'     => 5,
+		'status'  => 'publish',
+		'title'   => __( 'Recently Published' ),
+		'id'      => 'published-posts',
 	) );
 	$recent_comments = dash_comments();
 	
@@ -41,11 +48,11 @@ function wp_dashboard_activity() {
 // Generates `Publishing Soon` and `Recently Published` sections
 function dash_show_published_posts( $args ) {
 
-	$posts = new WP_Query(array(
-		'post_type' => 'post',
-		'post_status' => $args['status'],
-		'orderby' => 'date',
-		'order' => 'ASC',
+	$posts = new WP_Query( array(
+		'post_type'      => 'post',
+		'post_status'    => $args['status'],
+		'orderby'        => 'date',
+		'order'          => 'ASC',
 		'posts_per_page' => intval( $args['max'] )
 	));
 
@@ -96,7 +103,10 @@ function dash_comments( $total_items = 5 ) {
 	$comments = array();
 	$start = 0;
 
-	$comments_query = array( 'number' => $total_items * 5, 'offset' => 0 );
+	$comments_query = array(
+		'number' => $total_items * 5,
+		'offset' => 0
+	);
 	if ( ! current_user_can( 'edit_posts' ) )
 		$comments_query['status'] = 'approve';
 

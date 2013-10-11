@@ -59,7 +59,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 				require dirname( __FILE__ ) . '/dashboard-override.php';
 				exit;
 			}
-  		}
+		}
 	}
 	new Plugin_Dashboard;
 }
