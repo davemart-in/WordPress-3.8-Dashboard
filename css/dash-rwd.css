@@ -66,6 +66,10 @@
 	border: none;
 }
 
+#dashboard-widgets-wrap {
+	overflow: hidden;
+}
+
 #dashboard-widgets-wrap .columns-3 #postbox-container-4 .empty-container {
 	border: none !important;
 }

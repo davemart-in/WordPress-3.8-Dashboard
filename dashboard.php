@@ -38,6 +38,7 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 				if ( file_exists( $module ) )
 					include $module;
 			}
+			
 			$this->screen = 'dashboard';
 		}
 

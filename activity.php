@@ -11,21 +11,28 @@ function wp_dashboard_activity() {
 
 	echo '<div id="activity-widget">';
 
-	dash_show_published_posts( array(
+	$future_posts = dash_show_published_posts( array(
 		'display' => 2,
 		'max' => 5,
 		'status' => 'future',
 		'title' => __( 'Publishing Soon' ),
 		'id' => 'future-posts',
 	) );
-	dash_show_published_posts( array(
+	$recent_posts = dash_show_published_posts( array(
 		'display' => 2,
 		'max' => 5,
 		'status' => 'publish',
 		'title' => __( 'Recently Published' ),
 		'id' => 'published-posts',
 	) );
-	dash_comments();
+	$recent_comments = dash_comments();
+	
+	if ( !$future_posts && !$recent_posts && !$recent_comments ) {
+		echo '<div class="no-activity">';
+		echo '<p class="smiley"></p>';
+		echo '<p>' . __( 'No activity yet!' ) . '</p>';
+		echo '</div>';
+	}
 
 	echo '</div>';
 
@@ -72,10 +79,13 @@ function dash_show_published_posts( $args ) {
 		echo '</ul>';
 		echo '</div>';
 
+	} else {
+		return false;
 	}
 
 	wp_reset_postdata();
 
+	return true;
 }
 
 // show `Comments` section
@@ -102,10 +112,12 @@ function dash_comments( $total_items = 5 ) {
 		$comments_query['number'] = $total_items * 10;
 	}
 	
-	echo '<div id="latest-comments" class="activity-block">';
-	echo '<h4>' . __( 'Comments' ) . '</h4>';
+	
 
 	if ( $comments ) {
+		echo '<div id="latest-comments" class="activity-block">';
+		echo '<h4>' . __( 'Comments' ) . '</h4>';
+		
 		echo '<div id="the-comment-list" data-wp-lists="list:comment">';
 		foreach ( $comments as $comment )
 			_wp_dashboard_recent_comments_row( $comment );
@@ -116,12 +128,12 @@ function dash_comments( $total_items = 5 ) {
 
 		wp_comment_reply( -1, false, 'dashboard', false );
 		wp_comment_trashnotice();
+		
+		echo '</div>';
 	} else {
-		echo '<p>' . __( 'No comments yet.' ) . '</p>';
+		return false;
 	}
-	
-	echo '</div>';
-
+	return true;
 }
 
 // return relative date for given timestamp

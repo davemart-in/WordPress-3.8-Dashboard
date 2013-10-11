@@ -26,8 +26,6 @@ if ( current_user_can( 'edit_theme_options' ) )
 	wp_enqueue_script( 'customize-loader' );
 if ( current_user_can( 'install_plugins' ) )
 	wp_enqueue_script( 'plugin-install' );
-if ( current_user_can( 'upload_files' ) )
-	wp_enqueue_script( 'media-upload' );
 add_thickbox();
  
 if ( wp_is_mobile() )
@@ -106,10 +104,10 @@ $today = current_time('mysql', 1);
 ?>
  
 <div class="wrap">
-<?php screen_icon(); ?>
-<h2><?php $words = array( 'Hola', 'Bonjour', 'Aloha', 'Ahoy There', "G'day", "It's Go Time", 'Break a Leg', 'Go For Broke' ); echo esc_html( $words[ mt_rand( 0, count( $words) -1 ) ] ); ?></h2>
+	<?php screen_icon(); ?>
+	<h2><?php $words = array( 'Hola', 'Bonjour', 'Aloha', 'Ahoy There', "G'day", "It's Go Time", 'Break a Leg', 'Go For Broke' ); echo esc_html( $words[ mt_rand( 0, count( $words) -1 ) ] ); ?></h2>
  
-<?php if ( has_action( 'welcome_panel' ) && current_user_can( 'edit_theme_options' ) ) :
+	<?php if ( has_action( 'welcome_panel' ) && current_user_can( 'edit_theme_options' ) ) :
 	$classes = 'welcome-panel';
  
 	$option = get_user_meta( get_current_user_id(), 'show_welcome_panel', true );
@@ -133,14 +131,11 @@ $today = current_time('mysql', 1);
 		do_action( 'welcome_panel' ); 
 		?>
 	</div>
-<?php endif; ?>
+	<?php endif; ?>
  
-<div id="dashboard-widgets-wrap">
- 
-<?php wp_dashboard(); ?>
- 
-<div class="clear"></div>
-</div><!-- dashboard-widgets-wrap -->
+	<div id="dashboard-widgets-wrap">
+	<?php wp_dashboard(); ?>
+	</div><!-- dashboard-widgets-wrap -->
  
 </div><!-- wrap -->
  

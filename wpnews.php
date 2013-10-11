@@ -2,9 +2,11 @@
 
 // Add the WordPress News widget to the dashboard
 add_action( 'wp_dashboard_setup', 'add_wpnews_dashboard_widget' );
-
 function add_wpnews_dashboard_widget() {
 	if ( is_blog_admin() )
+		// Note it would be ideal to have this loaded by default in the right column
+		// Currently there is no way to set a $location arg in wp_add_dashboard_widget()
+		// Would love to add that in core when merging this in.
 		wp_add_dashboard_widget( 'dashboard_rss', __( 'WordPress News' ), 'wp_dashboard_rss', 'wp_dashboard_news_feed_control' );
 }
 
