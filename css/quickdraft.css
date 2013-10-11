@@ -1,11 +1,13 @@
 #dashboard_quick_draft .inside {
-	padding: 0 0 12px;
+	padding: 0;
 }
 
-#dashboard_quick_draft form,
+#dashboard_quick_draft form {
+	padding: 0 12px 1px 12px;
+}
 #dashboard_quick_draft .drafts,
 #dashboard_quick_draft .easy-blogging {
-	padding: 0 12px;
+	padding: 8px 12px 0;
 }
 
 #dashboard_quick_draft div.updated {
@@ -20,6 +22,13 @@
 
 
 /* Form styling */
+
+#dashboard_quick_draft input, #dashboard_quick_draft textarea {
+	box-sizing: border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	margin: 0;
+}
 
 #dashboard_quick_draft textarea {
 	resize: vertical;
@@ -49,15 +58,15 @@
 
 .textarea-wrap #content-prompt-text {
 	font-size: 1.1em;
-	padding: 10px 8px;
+	padding: 7px 8px;
 }
 
 #description-wrap {
 	margin-top: 12px;
 }
 
-.textarea-wrap textarea {
-	margin: 0 0 10px;
+.textarea-wrap textarea#content {
+	margin: 0 0 8px;
 	padding: 6px 7px;
 }
 
@@ -68,6 +77,23 @@
 
 input#save-post {
 	float: right;
+}
+
+
+form.initial-form label.prompt {
+	font-style: italic;
+}
+
+form.initial-form input#title {
+	height: 3em;
+}
+
+form.initial-form.quickpress-open label.prompt {
+	font-style: normal;
+}
+
+form.initial-form.quickpress-open input#title {
+	height: auto;
 }
 
 
@@ -83,8 +109,9 @@ input#save-post {
 	margin-top: 12px;
 }
 
-#dashboard_quick_draft .drafts .title {
-	font-size: 14px;
+#dashboard_quick_draft .drafts h4 {
+	margin: 0 0 8px 0;
+	font-weight: normal;
 }
 
 #dashboard_quick_draft .drafts abbr {
@@ -97,6 +124,10 @@ input#save-post {
 
 #draft-list li {
 	margin-bottom: 1em;
+}
+#draft-list li time {
+	display: block;
+	color: #bbb;
 }
 
 #draft-list li:last-child {

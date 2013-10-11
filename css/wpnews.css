@@ -1,4 +1,5 @@
 #dashboard_rss .inside {
+	margin: 0;
 	padding: 0;
 }
 
@@ -9,8 +10,7 @@
 
 .rss-widget {
 	border-bottom: 1px solid #eee;
-	margin-bottom: 12px;
-	padding: 0 12px 12px;
+	padding: 8px 12px 12px;
 }
 
 .rss-widget:last-child {
@@ -21,10 +21,21 @@
 	font-weight: normal;
 }
 
-.rss-widget span {
-	color: #999;
+a.rsswidget {
+	font-size: 13px;
 }
 
+.rss-widget span, .rss-widget span.rss-date {
+	color: #bbb;
+}
+
+.rss-widget span.rss-date {
+	margin-left: 12px;
+}
+
+.rss-widget ul li {
+	margin-bottom: 8px;
+}
 .dashboard-widget-control-form {
 	overflow: hidden;
 }
@@ -35,4 +46,9 @@
 
 body #dashboard-widgets .postbox form .submit {
 	margin: 0;
+}
+
+.rssSummary {
+	color: #999;
+	margin-top: 4px;
 }

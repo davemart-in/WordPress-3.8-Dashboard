@@ -101,7 +101,7 @@ function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 		<?php if ( 3 < count($drafts) ) { ?>
 		<p class="view-all"><a href="edit.php?post_status=draft" ><?php _e('View all'); ?></a></p>
 		<?php } ?>
-		<p class="title"><?php _e('Drafts'); ?></p>
+		<h4><?php _e('Drafts'); ?></h4>
 		<ul id="draft-list">
 			<li><?php echo join( "</li>\n<li>", $list ); ?></li>
 		</ul>

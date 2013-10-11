@@ -20,7 +20,7 @@
 }
 
 /* two columns on the dash */
-@media only screen and (min-width: 800px) and (max-width: 1299px) {
+@media only screen and (min-width: 800px) and (max-width: 1399px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 49.5%;
 	}
@@ -41,7 +41,7 @@
 }
 
 /* three columns on the dash */
-@media only screen and (min-width: 1300px) and (max-width: 1800px) {
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
 	#wpbody-content #dashboard-widgets .postbox-container {
 		width: 33.5%;
 	}

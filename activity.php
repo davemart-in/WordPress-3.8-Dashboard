@@ -45,11 +45,13 @@ function dash_show_published_posts( $args ) {
 	if ( $posts->have_posts() ) {
 
 		echo '<div id="' . $args['id'] . '" class="activity-block">';
-		echo $args['title'];
 
 		if ( $posts->post_count > $args['display'] ) {
 			echo '<small class="show-more"><a href="#">' . sprintf( __( 'See %s more&hellip;'), $posts->post_count - intval( $args['display'] ) ) . '</a></small>';
 		}
+
+		echo '<h4>' . $args['title'] . '</h4>';
+
 
 		echo '<ul>';
 
@@ -101,7 +103,7 @@ function dash_comments( $total_items = 5 ) {
 	}
 	
 	echo '<div id="latest-comments" class="activity-block">';
-	_e( 'Comments' );
+	echo '<h4>' . __( 'Comments' ) . '</h4>';
 
 	if ( $comments ) {
 		echo '<div id="the-comment-list" data-wp-lists="list:comment">';

@@ -3,6 +3,11 @@
 	margin: 0;
 }
 
+#dashboard_activity h4 {
+	margin: 0 0 8px 0;
+	font-weight: normal;
+}
+
 #future-posts .show-more,
 #published-posts .show-more {
 	float: right;
@@ -11,16 +16,18 @@
 #future-posts ul,
 #published-posts ul {
 	clear: both;
+	margin-bottom: 0;
 }
 
 #future-posts li,
 #published-posts li {
 	overflow: hidden;
+	margin-bottom: 8px;
 }
 
 #future-posts ul span,
 #published-posts ul span {
-	color: #aaa;
+	color: #bbb;
 	float: left;
 	margin-right: 8px;
 	min-width: 150px;
@@ -29,7 +36,7 @@
 .activity-block {
 	border-bottom: 1px solid #eee;
 	overflow: hidden;
-	padding: 12px 12px 0;
+	padding: 8px 12px;
 }
 
 .activity-block:last-child {
@@ -41,16 +48,68 @@
 	color: #ddd;
 }
 
+/* Comments */
+
+#the-comment-list .comment-item h4 {
+	font-size: 13px;
+	color: #999;
+}
+
 #the-comment-list .comment {
-	border-left: 4px solid #fff;
+	background: #f5f5f5;
+	padding: 12px;
+	position: relative;
+	border-top: 1px solid #eeeeee;
+}
+
+#the-comment-list .comment-item:first-child {
+	border-top: 1px solid #eeeeee;
 }
 
 #the-comment-list .unapproved {
-	background: none;
-	border-left: 4px solid #f4f290;
+	background: #f7fcfe;
+}
+
+#the-comment-list .unapproved:before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	background: #2ea2cc;
+	width: 4px;
 }
 
 #the-comment-list .alternate, 
 #the-comment-list .alt {
 	background: none;
+}
+
+#dashboard_activity .subsubsub {
+	float: none;
+	margin: 0 -12px;
+	border-top: 1px solid #eeeeee;
+	padding: 8px 12px 0 12px;
+}
+
+#dashboard_activity h4.comment-meta {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-bottom: 4px;
+}
+
+#dashboard_activity .comment-meta span.approve:before {
+	content: '\f227';
+	font: 20px/.5 "dashicons";
+	margin-left: 12px;
+	vertical-align: middle;
+	position: relative;
+	top: -1px;
+	margin-right: 2px;
+}
+
+#the-comment-list .comment-item p.row-actions {
+	margin: 4px 0 0 0;
 }
