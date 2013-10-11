@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) or exit;
 
 /** Load WordPress dashboard API */
-require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
+require_once( ABSPATH . 'wp-admin/includes/dashboard.php' );
 
 wp_dashboard_setup();
 

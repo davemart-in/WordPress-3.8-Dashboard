@@ -55,6 +55,14 @@ function dash_new_dashboard_quota() {
 	<?php
 }
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function dash_add_new_right_now() {
 	remove_meta_box( 'dashboard_right_now', 'dashboard', 'side' );
 	add_meta_box(
@@ -70,6 +78,14 @@ function dash_add_new_right_now() {
 }
 add_action( 'wp_dashboard_setup', 'dash_add_new_right_now' );
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function dash_new_right_now() { 
 	$theme = wp_get_theme();
 	if ( current_user_can( 'switch_themes' ) )

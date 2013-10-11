@@ -1,7 +1,13 @@
 <?php
 
-// Add the WordPress News widget to the dashboard
-add_action( 'wp_dashboard_setup', 'add_wpnews_dashboard_widget' );
+/**
+ * Add the WordPress News widget to the dashboard
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function add_wpnews_dashboard_widget() {
 	if ( is_blog_admin() )
 		// Note it would be ideal to have this loaded by default in the right column
@@ -14,7 +20,16 @@ function add_wpnews_dashboard_widget() {
 			'wp_dashboard_news_feed_control'
 		);
 }
+add_action( 'wp_dashboard_setup', 'add_wpnews_dashboard_widget' );
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_dashboard_default_feeds() {
 	return array(
 		'news'   => array(
@@ -50,6 +65,14 @@ function wp_dashboard_default_feeds() {
 	);
 }
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_dashboard_rss() {
 	$default_feeds = wp_dashboard_default_feeds();
 
@@ -70,6 +93,14 @@ function wp_dashboard_rss() {
 	wp_dashboard_cached_rss_widget( 'dashboard_rss', 'wp_dashboard_news_output', $default_urls );
 }
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_dashboard_news_output() {
 	$widgets = get_option( 'dashboard_widget_options' );
 
@@ -81,6 +112,14 @@ function wp_dashboard_news_output() {
 	}
 }
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_widget_news_output( $rss, $args = array() ) {
 
 	// Regular RSS feeds
@@ -161,16 +200,32 @@ function wp_widget_news_output( $rss, $args = array() ) {
 	echo '</ul>';
 }
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_dashboard_news_feed_control() {
 	wp_dashboard_news_control( 'dashboard_rss' );
 }
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_dashboard_news_control( $widget_id, $form_inputs = array() ) {
-	
+
 	// Single feed
 	if ( isset( $widget_options[$widget_id]['url'] ) )
 		return wp_dashboard_rss_control( $widget_id, $form_inputs );
-	
+
 	// Array of multiple feeds
 	if ( !$widget_options = get_option( 'dashboard_widget_options' ) )
 		$widget_options = array();
@@ -212,6 +267,14 @@ function wp_dashboard_news_control( $widget_id, $form_inputs = array() ) {
 	}
 }
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_dashboard_news_widget() {
 	require_once ABSPATH . 'wp-admin/includes/dashboard.php';
 	wp_dashboard_rss();

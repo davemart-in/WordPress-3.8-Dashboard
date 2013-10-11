@@ -23,6 +23,14 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			'dash-rwd'
 		);
 
+		/**
+		 *
+		 *
+		 *
+		 *
+		 * @since 3.7.0
+		 *
+		 */
 		function __construct() {
 			self::$instance = $this;
 
@@ -42,6 +50,14 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			$this->screen = 'dashboard';
 		}
 
+		/**
+		 *
+		 *
+		 *
+		 *
+		 * @since 3.7.0
+		 *
+		 */
 		function enqueue_scripts() {
 			if ( get_current_screen()->base !== $this->screen && get_current_screen()->base !== 'dashboard' )
 				return;
@@ -54,6 +70,14 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			}
 		}
 
+		/**
+		 *
+		 *
+		 *
+		 *
+		 * @since 3.7.0
+		 *
+		 */
 		function override_dashboard() {
 			if ( get_current_screen()->in_admin( 'site' ) ) {
 				require dirname( __FILE__ ) . '/dashboard-override.php';

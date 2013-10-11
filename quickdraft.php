@@ -1,8 +1,13 @@
 <?php
 
-// Add the QuickDraft widget to the dashboard
-add_action( 'wp_dashboard_setup', 'add_quickdraft_dashboard_widget' );
-
+/**
+ * Add the QuickDraft widget to the dashboard
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function add_quickdraft_dashboard_widget() {
 	if ( is_blog_admin() && current_user_can( 'edit_posts' ) )
 		add_meta_box(
@@ -14,16 +19,32 @@ function add_quickdraft_dashboard_widget() {
 		'high'
 	);
 }
+add_action( 'wp_dashboard_setup', 'add_quickdraft_dashboard_widget' );
 
-add_action( 'admin_post_new-quickdraft-post', 'dashboard_plugin_quickdraft_admin_post' );
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function dashboard_plugin_quickdraft_admin_post() {
 	$post = get_post( $_REQUEST['post_ID'] );
 	check_admin_referer( 'add-' . $post->post_type );
 	edit_post();
 	return wp_dashboard_quick_draft();
 }
+add_action( 'admin_post_new-quickdraft-post', 'dashboard_plugin_quickdraft_admin_post' );
 
-// The QuickDraft widget display and creation of drafts
+/**
+ * The QuickDraft widget display and creation of drafts
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_dashboard_quick_draft() {
 	global $post_ID;
 
@@ -74,6 +95,14 @@ function wp_dashboard_quick_draft() {
 	wp_dashboard_recent_quickdrafts();
 }
 
+/**
+ *
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 	if ( !$drafts ) {
 		$drafts_query = new WP_Query( array(
@@ -98,7 +127,7 @@ function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 			
 			$url = get_edit_post_link( $draft->ID );
 			$title = _draft_or_post_title( $draft->ID );
-			$item = '<a href="'.$url.'" title="' . sprintf( __( 'Edit &#8220;%s&#8221;' ), esc_attr( $title ) ) . '">' . esc_html($title) . '</a> <time datetime="' . get_the_time( 'c', $draft) . '">' . get_the_time( get_option( 'date_format' ), $draft ) . '</time>';
+			$item = '<a href="' . $url . '" title="' . sprintf( __( 'Edit &#8220;%s&#8221;' ), esc_attr( $title ) ) . '">' . esc_html( $title ) . '</a> <time datetime="' . get_the_time( 'c', $draft) . '">' . get_the_time( get_option( 'date_format' ), $draft ) . '</time>';
 			if ( $the_content = wp_trim_words( $draft->post_content, 10 ) )
 				$item .= '<p>' . $the_content . '</p>';
 			$list[] = $item;

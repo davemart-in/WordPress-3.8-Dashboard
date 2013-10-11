@@ -1,7 +1,13 @@
 <?php
 
-// add the `Activity` widget to the dashboard
-add_action( 'wp_dashboard_setup', 'add_activity_dashboard_widget' );
+/**
+ * add the `Activity` widget to the dashboard
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function add_activity_dashboard_widget() {
 	add_meta_box(
 		'dashboard_activity',
@@ -12,8 +18,16 @@ function add_activity_dashboard_widget() {
 		'high'
 	);
 }
+add_action( 'wp_dashboard_setup', 'add_activity_dashboard_widget' );
 
-// callback function for `Activity` widget
+/**
+ * callback function for `Activity` widget
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function wp_dashboard_activity() {
 
 	echo '<div id="activity-widget">';
@@ -45,7 +59,14 @@ function wp_dashboard_activity() {
 
 }
 
-// Generates `Publishing Soon` and `Recently Published` sections
+/**
+ * Generates `Publishing Soon` and `Recently Published` sections
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function dash_show_published_posts( $args ) {
 
 	$posts = new WP_Query( array(
@@ -95,7 +116,14 @@ function dash_show_published_posts( $args ) {
 	return true;
 }
 
-// show `Comments` section
+/**
+ * show `Comments` section
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function dash_comments( $total_items = 5 ) {
 	global $wpdb;
 
@@ -146,7 +174,14 @@ function dash_comments( $total_items = 5 ) {
 	return true;
 }
 
-// return relative date for given timestamp
+/**
+ * return relative date for given timestamp
+ *
+ *
+ *
+ * @since 3.7.0
+ *
+ */
 function dash_relative_date( $time ) {
 
 	$diff = floor( ( $time - time() ) / DAY_IN_SECONDS );
