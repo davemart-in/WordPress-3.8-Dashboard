@@ -3,15 +3,16 @@
  * Description: Refresh WordPress dashboard screen
  * Author: Core Volunteers
  * Author URI: http://make.wordpress.org/ui/tag/dash/
- * Version: 0.1
+ * Version: 0.2
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
+// NOTE: This class won't exist once this plugin is merged into core.
 if ( !class_exists( 'Plugin_Dashboard' ) ) {
 	class Plugin_Dashboard {
 
-		const version = '0.1';
+		const version = '0.2';
 		static $instance;
 		private $screen;
 
@@ -23,14 +24,6 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			'dash-rwd'
 		);
 
-		/**
-		 *
-		 *
-		 *
-		 *
-		 * @since 3.7.0
-		 *
-		 */
 		function __construct() {
 			self::$instance = $this;
 
@@ -50,14 +43,6 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			$this->screen = 'dashboard';
 		}
 
-		/**
-		 *
-		 *
-		 *
-		 *
-		 * @since 3.7.0
-		 *
-		 */
 		function enqueue_scripts() {
 			if ( get_current_screen()->base !== $this->screen && get_current_screen()->base !== 'dashboard' )
 				return;
@@ -70,14 +55,6 @@ if ( !class_exists( 'Plugin_Dashboard' ) ) {
 			}
 		}
 
-		/**
-		 *
-		 *
-		 *
-		 *
-		 * @since 3.7.0
-		 *
-		 */
 		function override_dashboard() {
 			if ( get_current_screen()->in_admin( 'site' ) ) {
 				require dirname( __FILE__ ) . '/dashboard-override.php';

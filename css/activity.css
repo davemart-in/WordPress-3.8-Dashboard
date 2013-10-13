@@ -1,11 +1,64 @@
+#dashboard_activity h4 {
+	margin: 0 0 8px 0;
+	font-weight: normal;
+}
+
+#dashboard_activity h4.comment-meta {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-bottom: 4px;
+}
+
+#dashboard_activity .comment-meta span.approve:before {
+	content: '\f227';
+	font: 20px/.5 "dashicons";
+	margin-left: 12px;
+	vertical-align: middle;
+	position: relative;
+	top: -1px;
+	margin-right: 2px;
+}
+
 #dashboard_activity .inside {
 	padding: 0;
 	margin: 0;
 }
 
-#dashboard_activity h4 {
-	margin: 0 0 8px 0;
-	font-weight: normal;
+#dashboard_activity .no-activity {
+	overflow: hidden;
+	padding: 0 12px 12px;
+	text-align: center;
+}
+
+#dashboard_activity .no-activity p {
+	color: #999;
+	font-size: 16px;
+}
+
+#dashboard_activity .no-activity .smiley {
+	margin-top: 0;
+}
+
+#dashboard_activity .no-activity .smiley:before {
+	content: '\f328';
+	font: normal 120px/1 'dashicons';
+	speak: none;
+	display: block;
+	margin: 0 5px 0 0;
+	padding: 0;
+	text-indent: 0;
+	text-align: center;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	text-decoration: none !important;
+}
+
+#dashboard_activity .subsubsub {
+	float: none;
+	margin: 0 -12px;
+	border-top: 1px solid #eeeeee;
+	padding: 8px 12px 0 12px;
 }
 
 #future-posts .show-more,
@@ -50,9 +103,14 @@
 
 /* Comments */
 
-#the-comment-list .comment-item h4 {
-	font-size: 13px;
-	color: #999;
+#the-comment-list tr.undo, #the-comment-list div.undo {
+	background: none;
+	padding: 6px 0;
+}
+
+#the-comment-list .alternate, 
+#the-comment-list .alt {
+	background: none;
 }
 
 #the-comment-list .comment {
@@ -60,6 +118,15 @@
 	padding: 12px;
 	position: relative;
 	border-top: 1px solid #eeeeee;
+}
+
+#the-comment-list .comment-item h4 {
+	font-size: 13px;
+	color: #999;
+}
+
+#the-comment-list .comment-item p.row-actions {
+	margin: 4px 0 0 0;
 }
 
 #the-comment-list .comment-item:first-child {
@@ -79,66 +146,4 @@
 	bottom: 0;
 	background: #2ea2cc;
 	width: 4px;
-}
-
-#the-comment-list .alternate, 
-#the-comment-list .alt {
-	background: none;
-}
-
-#dashboard_activity .subsubsub {
-	float: none;
-	margin: 0 -12px;
-	border-top: 1px solid #eeeeee;
-	padding: 8px 12px 0 12px;
-}
-
-#dashboard_activity h4.comment-meta {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	margin-bottom: 4px;
-}
-
-#dashboard_activity .comment-meta span.approve:before {
-	content: '\f227';
-	font: 20px/.5 "dashicons";
-	margin-left: 12px;
-	vertical-align: middle;
-	position: relative;
-	top: -1px;
-	margin-right: 2px;
-}
-
-#the-comment-list .comment-item p.row-actions {
-	margin: 4px 0 0 0;
-}
-
-#dashboard_activity .no-activity {
-	overflow: hidden;
-	padding: 0 12px 12px;
-	text-align: center;
-}
-
-#dashboard_activity .no-activity p {
-	color: #999;
-	font-size: 16px;
-}
-
-#dashboard_activity .no-activity .smiley {
-	margin-top: 0;
-}
-
-#dashboard_activity .no-activity .smiley:before {
-	content: '\f328';
-	font: normal 120px/1 'dashicons';
-	speak: none;
-	display: block;
-	margin: 0 5px 0 0;
-	padding: 0;
-	text-indent: 0;
-	text-align: center;
-	position: relative;
-	-webkit-font-smoothing: antialiased;
-	text-decoration: none !important;
 }

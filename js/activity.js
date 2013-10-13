@@ -1,18 +1,8 @@
-;( function( $, window, document, undefined ) {
-
-	'use strict';
-
+(function ($) {
 	$(document).ready( function() {
-
-		var $future_posts = $( '#future-posts' );
-
-		$future_posts.find( '.show-more' ).on( 'click', function() {
-			$future_posts.find( 'li.hidden' ).fadeIn().removeClass( 'hidden' );
-			$( this ).fadeOut();
+		$( '.show-more a' ).on( 'click', function(e) {
+			$( this ).fadeOut().closest('.activity-block').find( 'li.hidden' ).fadeIn().removeClass( 'hidden' );
+			e.preventDefault();
 		})
-
 	});
-
-
-
-})( jQuery, window, document );
+}(jQuery));

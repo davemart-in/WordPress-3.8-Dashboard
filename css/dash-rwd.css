@@ -5,6 +5,18 @@
 	width: 25%;
 }
 
+#dashboard-widgets-wrap .columns-3 #postbox-container-4 .empty-container {
+	border: none !important;
+}
+
+#dashboard-widgets-wrap {
+	overflow: hidden;
+}
+
+.metabox-holder .postbox-container .empty-container {
+	border: none;
+}
+
 /* one column on the dash */
 /* this includes all of what's currently in wp-admin.css with column option related CSS removed */
 @media only screen and (max-width: 799px) {
@@ -60,21 +72,4 @@
 		height: 0;
 		min-height: 0;
 	}
-}
-
-.metabox-holder .postbox-container .empty-container {
-	border: none;
-}
-
-#dashboard-widgets-wrap {
-	overflow: hidden;
-}
-
-#dashboard-widgets-wrap .columns-3 #postbox-container-4 .empty-container {
-	border: none !important;
-}
-
-.postbox-container,
-.meta-box-sortables {
-	min-height: 245px;
 }

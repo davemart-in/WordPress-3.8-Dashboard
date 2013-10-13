@@ -8,8 +8,26 @@
 	padding: 0 12px 12px;
 }
 
+body #dashboard-widgets .postbox form .submit {
+	margin: 0;
+}
+
+.dashboard-widget-control-form {
+	overflow: hidden;
+}
+
+.dashboard-widget-control-form p {
+	margin-top: 0;
+}
+
+.rssSummary {
+	color: #999;
+	margin-top: 4px;
+}
+
 .rss-widget {
 	border-bottom: 1px solid #eee;
+	font-size: 13px;
 	padding: 8px 12px 12px;
 }
 
@@ -21,11 +39,8 @@
 	font-weight: normal;
 }
 
-a.rsswidget {
-	font-size: 13px;
-}
-
-.rss-widget span, .rss-widget span.rss-date {
+.rss-widget span, 
+.rss-widget span.rss-date {
 	color: #bbb;
 }
 
@@ -35,20 +50,4 @@ a.rsswidget {
 
 .rss-widget ul li {
 	margin-bottom: 8px;
-}
-.dashboard-widget-control-form {
-	overflow: hidden;
-}
-
-.dashboard-widget-control-form p {
-	margin-top: 0;
-}
-
-body #dashboard-widgets .postbox form .submit {
-	margin: 0;
-}
-
-.rssSummary {
-	color: #999;
-	margin-top: 4px;
 }

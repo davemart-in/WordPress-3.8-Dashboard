@@ -5,7 +5,7 @@
  *
  *
  *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function add_wpnews_dashboard_widget() {
@@ -23,11 +23,11 @@ function add_wpnews_dashboard_widget() {
 add_action( 'wp_dashboard_setup', 'add_wpnews_dashboard_widget' );
 
 /**
+ * Returns default WordPress News feeds
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_dashboard_default_feeds() {
@@ -66,11 +66,11 @@ function wp_dashboard_default_feeds() {
 }
 
 /**
+ * Check for chached feeds
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_dashboard_rss() {
@@ -94,11 +94,11 @@ function wp_dashboard_rss() {
 }
 
 /**
+ * Display news feeds
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_dashboard_news_output() {
@@ -113,11 +113,11 @@ function wp_dashboard_news_output() {
 }
 
 /**
+ * Generate code for each news feed
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_widget_news_output( $rss, $args = array() ) {
@@ -201,11 +201,11 @@ function wp_widget_news_output( $rss, $args = array() ) {
 }
 
 /**
+ * Adds control option to news feed
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_dashboard_news_feed_control() {
@@ -213,11 +213,11 @@ function wp_dashboard_news_feed_control() {
 }
 
 /**
+ * Generates code to show news feed control
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_dashboard_news_control( $widget_id, $form_inputs = array() ) {
@@ -268,11 +268,11 @@ function wp_dashboard_news_control( $widget_id, $form_inputs = array() ) {
 }
 
 /**
+ * Returns reset form plus new draft via AJAX call
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_dashboard_news_widget() {

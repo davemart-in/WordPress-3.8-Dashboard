@@ -1,4 +1,13 @@
-#dash-right-now {}
+#dash-right-now ul {
+	margin: 0;
+	overflow: hidden;
+}
+
+#dash-right-now li {
+	width: 50%;
+	float: left;
+	margin-bottom: 10px;
+}
 
 #dash-right-now .inside {
 	margin-bottom: 0;
@@ -14,44 +23,31 @@
 	margin-top: 0;
 }
 
-#dash-right-now ul {
-	margin: 0;
-	overflow: hidden;
-}
-
 .mu-storage {
 	overflow: hidden;
 }
 
-#dash-right-now li {
-	width: 50%;
-	float: left;
-	margin-bottom: 10px;
-}
-
-#dash-right-now .sub {
-	padding: 12px 12px 6px 12px;
-	border-top: 1px solid;
-}
-
-#dash-right-now .sub p {
-	margin: 0 0 .5em;
-	font-size: 11px;
-}
-
 /* Colors */
+
+#dash-right-now li a:before {
+	color: #888;
+}
+
 #dash-right-now .sub {
 	color: #bfbbbb;
 	background: #f5f5f5;
 	border-top-color: #dedede;
+	padding: 12px 12px 6px 12px;
+	border-top: 1px solid;
 }
 
 #dash-right-now .sub h4 {
 	color: #555;
 }
 
-#dash-right-now li a:before {
-	color: #888;
+#dash-right-now .sub p {
+	margin: 0 0 .5em;
+	font-size: 11px;
 }
 
 #dash-right-now .warning a:before {
@@ -74,12 +70,12 @@
 	text-decoration: none !important;
 }
 
-#dash-right-now .post-count a:before {
-	content: '\f109';
-}
-
 #dash-right-now .page-count a:before {
 	content: '\f105';
+}
+
+#dash-right-now .post-count a:before {
+	content: '\f109';
 }
 
 #dash-right-now .comment-count a:before {

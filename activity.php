@@ -5,7 +5,7 @@
  *
  *
  *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function add_activity_dashboard_widget() {
@@ -25,27 +25,34 @@ add_action( 'wp_dashboard_setup', 'add_activity_dashboard_widget' );
  *
  *
  *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_dashboard_activity() {
 
 	echo '<div id="activity-widget">';
 
+	do_action( 'activity_beginning' );
+
 	$future_posts = dash_show_published_posts( array(
 		'display' => 2,
-		'max'     => 5,
-		'status'  => 'future',
-		'title'   => __( 'Publishing Soon' ),
-		'id'      => 'future-posts',
+		'max' => 5,
+		'status' => 'future',
+		'order' => 'ASC',
+		'title' => __( 'Publishing Soon' ),
+		'id' => 'future-posts',
 	) );
 	$recent_posts = dash_show_published_posts( array(
 		'display' => 2,
-		'max'     => 5,
-		'status'  => 'publish',
-		'title'   => __( 'Recently Published' ),
-		'id'      => 'published-posts',
+		'max' => 5,
+		'status' => 'publish',
+		'order' => 'DESC',
+		'title' => __( 'Recently Published' ),
+		'id' => 'published-posts',
 	) );
+	
+	do_action( 'activity_middle' );
+	
 	$recent_comments = dash_comments();
 	
 	if ( !$future_posts && !$recent_posts && !$recent_comments ) {
@@ -54,9 +61,10 @@ function wp_dashboard_activity() {
 		echo '<p>' . __( 'No activity yet!' ) . '</p>';
 		echo '</div>';
 	}
+	
+	do_action( 'activity_end' );
 
 	echo '</div>';
-
 }
 
 /**
@@ -64,16 +72,16 @@ function wp_dashboard_activity() {
  *
  *
  *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function dash_show_published_posts( $args ) {
 
-	$posts = new WP_Query( array(
-		'post_type'      => 'post',
-		'post_status'    => $args['status'],
-		'orderby'        => 'date',
-		'order'          => 'ASC',
+	$posts = new WP_Query(array(
+		'post_type' => 'post',
+		'post_status' => $args['status'],
+		'orderby' => 'date',
+		'order' => $args['order'],
 		'posts_per_page' => intval( $args['max'] )
 	));
 
@@ -86,7 +94,6 @@ function dash_show_published_posts( $args ) {
 		}
 
 		echo '<h4>' . $args['title'] . '</h4>';
-
 
 		echo '<ul>';
 
@@ -117,11 +124,11 @@ function dash_show_published_posts( $args ) {
 }
 
 /**
- * show `Comments` section
+ * Show `Comments` section
  *
  *
  *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function dash_comments( $total_items = 5 ) {
@@ -179,20 +186,18 @@ function dash_comments( $total_items = 5 ) {
  *
  *
  *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function dash_relative_date( $time ) {
 
 	$diff = floor( ( $time - time() ) / DAY_IN_SECONDS );
 
-	if ( $diff == 0 ) {
+	if ( $diff == 0 )
 		return __( 'Today' );
-	}
 
-	if ( $diff == 1 ) {
+	if ( $diff == 1 )
 		return __( 'Tomorrow' );
-	}
 
 	return date( 'M jS', $time);
 

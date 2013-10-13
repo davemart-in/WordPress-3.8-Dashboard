@@ -5,7 +5,7 @@
  *
  *
  *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function add_quickdraft_dashboard_widget() {
@@ -22,11 +22,11 @@ function add_quickdraft_dashboard_widget() {
 add_action( 'wp_dashboard_setup', 'add_quickdraft_dashboard_widget' );
 
 /**
+ * Quick Draft $_POST is handled here
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function dashboard_plugin_quickdraft_admin_post() {
@@ -38,11 +38,11 @@ function dashboard_plugin_quickdraft_admin_post() {
 add_action( 'admin_post_new-quickdraft-post', 'dashboard_plugin_quickdraft_admin_post' );
 
 /**
- * The QuickDraft widget display and creation of drafts
+ * The Quick Draft widget display and creation of drafts
  *
  *
  *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_dashboard_quick_draft() {
@@ -96,11 +96,11 @@ function wp_dashboard_quick_draft() {
 }
 
 /**
+ * Show `Recent Drafts` below Quick Draft form
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function wp_dashboard_recent_quickdrafts( $drafts = false ) {

@@ -56,11 +56,11 @@ function dash_new_dashboard_quota() {
 }
 
 /**
+ * Add `Right Now` widget to the dashboard
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function dash_add_new_right_now() {
@@ -79,11 +79,11 @@ function dash_add_new_right_now() {
 add_action( 'wp_dashboard_setup', 'dash_add_new_right_now' );
 
 /**
+ * Renders new slimmed down Right Now widget
  *
  *
  *
- *
- * @since 3.7.0
+ * @since 3.8.0
  *
  */
 function dash_new_right_now() { 
