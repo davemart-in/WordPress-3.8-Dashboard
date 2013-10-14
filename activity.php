@@ -36,19 +36,19 @@ function wp_dashboard_activity() {
 
 	$future_posts = dash_show_published_posts( array(
 		'display' => 2,
-		'max' => 5,
-		'status' => 'future',
-		'order' => 'ASC',
-		'title' => __( 'Publishing Soon' ),
-		'id' => 'future-posts',
+		'max'     => 5,
+		'status'  => 'future',
+		'order'   => 'ASC',
+		'title'   => __( 'Publishing Soon' ),
+		'id'      => 'future-posts',
 	) );
 	$recent_posts = dash_show_published_posts( array(
 		'display' => 2,
-		'max' => 5,
-		'status' => 'publish',
-		'order' => 'DESC',
-		'title' => __( 'Recently Published' ),
-		'id' => 'published-posts',
+		'max'     => 5,
+		'status'  => 'publish',
+		'order'   => 'DESC',
+		'title'   => __( 'Recently Published' ),
+		'id'      => 'published-posts',
 	) );
 	
 	do_action( 'activity_middle' );
@@ -78,10 +78,10 @@ function wp_dashboard_activity() {
 function dash_show_published_posts( $args ) {
 
 	$posts = new WP_Query(array(
-		'post_type' => 'post',
-		'post_status' => $args['status'],
-		'orderby' => 'date',
-		'order' => $args['order'],
+		'post_type'      => 'post',
+		'post_status'    => $args['status'],
+		'orderby'        => 'date',
+		'order'          => $args['order'],
 		'posts_per_page' => intval( $args['max'] )
 	));
 
