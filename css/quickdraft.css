@@ -128,10 +128,6 @@ form.initial-form.quickpress-open input#title {
 	color: #bbb;
 }
 
-#draft-list li:last-child {
-	margin-bottom: 0;
-}
-
 #draft-list p {
 	margin: 0;
 }
@@ -262,10 +258,6 @@ form.initial-form.quickpress-open input#title {
 }
 #draft-list li time {
 	color: #bbb;
-}
-
-#draft-list li:last-child {
-	margin-bottom: 0;
 }
 
 #draft-list p {
