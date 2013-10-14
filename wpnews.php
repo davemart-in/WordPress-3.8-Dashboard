@@ -9,7 +9,6 @@
  *
  */
 function add_wpnews_dashboard_widget() {
-	if ( is_blog_admin() )
 		// Note it would be ideal to have this loaded by default in the right column
 		// Currently there is no way to set a $location arg in wp_add_dashboard_widget()
 		// Would love to add that in core when merging this in.
@@ -121,83 +120,85 @@ function wp_dashboard_news_output() {
  *
  */
 function wp_widget_news_output( $rss, $args = array() ) {
-
+	
 	// Regular RSS feeds
 	if ( isset( $args['type'] ) && 'plugins' != $args['type'] ) 	
 		return wp_widget_rss_output( $rss, $args );
-
-	// Plugin feeds plus link to install them
-	$popular = fetch_feed( $args['url']['popular'] );
-	$new     = fetch_feed( $args['url']['new'] );
-
-	if ( false === $plugin_slugs = get_transient( 'plugin_slugs' ) ) {
-		$plugin_slugs = array_keys( get_plugins() );
-		set_transient( 'plugin_slugs', $plugin_slugs, DAY_IN_SECONDS );
-	}
-
-	echo '<ul>';
-
-	foreach ( array(
-		'popular' => __( 'Popular Plugin' ),
-		'new'     => __( 'Newest Plugin' )
-	) as $feed => $label ) {
-		if ( is_wp_error($$feed) || !$$feed->get_item_quantity() )
-			continue;
-
-		$items = $$feed->get_items(0, 5);
-
-		// Pick a random, non-installed plugin
-		while ( true ) {
-			// Abort this foreach loop iteration if there's no plugins left of this type
-			if ( 0 == count($items) )
-				continue 2;
-
-			$item_key = array_rand($items);
-			$item = $items[$item_key];
-
-			list($link, $frag) = explode( '#', $item->get_link() );
-
-			$link = esc_url($link);
-			if ( preg_match( '|/([^/]+?)/?$|', $link, $matches ) )
-				$slug = $matches[1];
-			else {
-				unset( $items[$item_key] );
-				continue;
-			}
-
-			// Is this random plugin's slug already installed? If so, try again.
-			reset( $plugin_slugs );
-			foreach ( $plugin_slugs as $plugin_slug ) {
-				if ( $slug == substr( $plugin_slug, 0, strlen( $slug ) ) ) {
-					unset( $items[$item_key] );
-					continue 2;
-				}
-			}
-
-			// If we get to this point, then the random plugin isn't installed and we can stop the while().
-			break;
-		}
-
-		// Eliminate some common badly formed plugin descriptions
-		while ( ( null !== $item_key = array_rand($items) ) && false !== strpos( $items[$item_key]->get_description(), 'Plugin Name:' ) )
-			unset($items[$item_key]);
-
-		if ( !isset($items[$item_key]) )
-			continue;
-
-		$title = esc_html( $item->get_title() );
-
-		$description = esc_html( strip_tags( @html_entity_decode( $item->get_description(), ENT_QUOTES, get_option( 'blog_charset' ) ) ) );
-
-		$ilink = wp_nonce_url('plugin-install.php?tab=plugin-information&plugin=' . $slug, 'install-plugin_' . $slug) . '&amp;TB_iframe=true&amp;width=600&amp;height=800';
-
-		echo "<li><span>$label:</span> <a href='$link'>$title</a></h5>&nbsp;<span>(<a href='$ilink' class='thickbox' title='$title'>" . __( 'Install' ) . "</a>)</span></li>";
-
-		$$feed->__destruct();
-		unset( $$feed );
-	}
 	
-	echo '</ul>';
+	// Plugin feeds plus link to install them
+	if ( ! is_multisite() && current_user_can( 'install_plugins' ) ) {
+		$popular = fetch_feed( $args['url']['popular'] );
+		$new     = fetch_feed( $args['url']['new'] );
+	
+		if ( false === $plugin_slugs = get_transient( 'plugin_slugs' ) ) {
+			$plugin_slugs = array_keys( get_plugins() );
+			set_transient( 'plugin_slugs', $plugin_slugs, DAY_IN_SECONDS );
+		}
+	
+		echo '<ul>';
+	
+		foreach ( array(
+			'popular' => __( 'Popular Plugin' ),
+			'new'     => __( 'Newest Plugin' )
+		) as $feed => $label ) {
+			if ( is_wp_error($$feed) || !$$feed->get_item_quantity() )
+				continue;
+	
+			$items = $$feed->get_items(0, 5);
+	
+			// Pick a random, non-installed plugin
+			while ( true ) {
+				// Abort this foreach loop iteration if there's no plugins left of this type
+				if ( 0 == count($items) )
+					continue 2;
+	
+				$item_key = array_rand($items);
+				$item = $items[$item_key];
+	
+				list($link, $frag) = explode( '#', $item->get_link() );
+	
+				$link = esc_url($link);
+				if ( preg_match( '|/([^/]+?)/?$|', $link, $matches ) )
+					$slug = $matches[1];
+				else {
+					unset( $items[$item_key] );
+					continue;
+				}
+	
+				// Is this random plugin's slug already installed? If so, try again.
+				reset( $plugin_slugs );
+				foreach ( $plugin_slugs as $plugin_slug ) {
+					if ( $slug == substr( $plugin_slug, 0, strlen( $slug ) ) ) {
+						unset( $items[$item_key] );
+						continue 2;
+					}
+				}
+	
+				// If we get to this point, then the random plugin isn't installed and we can stop the while().
+				break;
+			}
+	
+			// Eliminate some common badly formed plugin descriptions
+			while ( ( null !== $item_key = array_rand($items) ) && false !== strpos( $items[$item_key]->get_description(), 'Plugin Name:' ) )
+				unset($items[$item_key]);
+	
+			if ( !isset($items[$item_key]) )
+				continue;
+	
+			$title = esc_html( $item->get_title() );
+	
+			$description = esc_html( strip_tags( @html_entity_decode( $item->get_description(), ENT_QUOTES, get_option( 'blog_charset' ) ) ) );
+	
+			$ilink = wp_nonce_url('plugin-install.php?tab=plugin-information&plugin=' . $slug, 'install-plugin_' . $slug) . '&amp;TB_iframe=true&amp;width=600&amp;height=800';
+	
+			echo "<li><span>$label:</span> <a href='$link'>$title</a></h5>&nbsp;<span>(<a href='$ilink' class='thickbox' title='$title'>" . __( 'Install' ) . "</a>)</span></li>";
+	
+			$$feed->__destruct();
+			unset( $$feed );
+		}
+		
+		echo '</ul>';
+	}
 }
 
 /**
