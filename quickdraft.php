@@ -67,6 +67,8 @@ function wp_dashboard_quick_draft() {
 	}
 
 	$post_ID = (int) $post->ID;
+	
+	do_action( 'dashboard_quickdraft_beginning', $post );
 ?>
 
 	<form name="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" id="quick-press" class="initial-form">
@@ -93,6 +95,8 @@ function wp_dashboard_quick_draft() {
 
 <?php
 	wp_dashboard_recent_quickdrafts();
+	
+	do_action( 'dashboard_quickdraft_end' );
 }
 
 /**
@@ -132,6 +136,8 @@ function wp_dashboard_recent_quickdrafts( $drafts = false ) {
 				$item .= '<p>' . $the_content . '</p>';
 			$list[] = $item;
 		}
+		
+		do_action( 'dashboard_quickdraft_drafts_list', $drafts );
 ?>
 	<div class="drafts">
 		<?php if ( 3 < count($drafts) ) { ?>

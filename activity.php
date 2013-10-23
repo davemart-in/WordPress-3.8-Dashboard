@@ -32,7 +32,7 @@ function wp_dashboard_activity() {
 
 	echo '<div id="activity-widget">';
 
-	do_action( 'activity_beginning' );
+	do_action( 'dashboard_activity_beginning' );
 
 	$future_posts = dash_show_published_posts( array(
 		'display' => 2,
@@ -51,7 +51,7 @@ function wp_dashboard_activity() {
 		'id'      => 'published-posts',
 	) );
 	
-	do_action( 'activity_middle' );
+	do_action( 'dashboard_activity_middle' );
 	
 	$recent_comments = dash_comments();
 	
@@ -62,7 +62,7 @@ function wp_dashboard_activity() {
 		echo '</div>';
 	}
 	
-	do_action( 'activity_end' );
+	do_action( 'dashboard_activity_end' );
 
 	echo '</div>';
 }

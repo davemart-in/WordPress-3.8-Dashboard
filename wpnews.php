@@ -88,8 +88,12 @@ function wp_dashboard_rss() {
 	foreach( $default_feeds as $key => $value ) {
 		$default_urls[] = $value['url'];
 	}
+	
+	do_action( 'dashboard_news_beginning' );
 
 	wp_dashboard_cached_rss_widget( 'dashboard_rss', 'wp_dashboard_news_output', $default_urls );
+	
+	do_action( 'dashboard_news_end' );
 }
 
 /**
