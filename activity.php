@@ -77,13 +77,15 @@ function wp_dashboard_activity() {
  */
 function dash_show_published_posts( $args ) {
 
-	$posts = new WP_Query(array(
+	$query_args = array(
 		'post_type'      => 'post',
 		'post_status'    => $args['status'],
 		'orderby'        => 'date',
 		'order'          => $args['order'],
 		'posts_per_page' => intval( $args['max'] )
-	));
+	);
+	$query_args = apply_filters( 'dash_show_published_posts_query_args', $query_args );
+	$posts = new WP_Query( $query_args );
 
 	if ( $posts->have_posts() ) {
 
