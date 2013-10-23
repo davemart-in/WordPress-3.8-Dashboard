@@ -102,7 +102,7 @@ function dash_new_right_now() {
 	$post_types = (array) apply_filters( 'rightnow_post_types', $post_types );
 	foreach ( $post_types as $post_type => $post_type_obj ){
 		$num_posts = wp_count_posts( $post_type );
-		if ( $num_posts ) {
+		if ( $num_posts && $num_posts->publish ) {
 			printf(
 				'<li class="%1$s-count"><a href="edit.php?post_type=%1$s">%2$s %3$s</a></li>', 
 				$post_type,
@@ -113,7 +113,7 @@ function dash_new_right_now() {
 	}
 	// Comments
 	$num_comm = wp_count_comments();
-	if ( $num_comm ) {
+	if ( $num_comm && $num_comm->total_comments ) {
 		$text = _n( 'comment', 'comments', $num_comm->total_comments );
 		printf(
 			'<li class="comment-count"><a href="edit-comments.php">%1$s %2$s</a></li>', 
