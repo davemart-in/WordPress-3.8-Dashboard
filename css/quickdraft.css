@@ -5,7 +5,7 @@
 }
 
 #dashboard_quick_draft form {
-	padding: 0 12px 1px 12px;
+	padding: 0 12px 12px;
 	overflow: hidden;
 }
 
@@ -22,6 +22,7 @@
 
 input#save-post {
 	float: right;
+	margin-bottom: 12px!important;
 }
 
 form.initial-form label.prompt {
