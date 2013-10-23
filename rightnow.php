@@ -13,7 +13,7 @@
  *
  * @return bool True if not multisite, user can't upload files, or the space check option is disabled.
  */
-function dash_new_dashboard_quota() {
+function dashboard_new_dashboard_quota() {
 	if ( !is_multisite() || !current_user_can( 'upload_files' ) || get_site_option( 'upload_space_check_disabled' ) )
 		return true;
 
@@ -63,20 +63,20 @@ function dash_new_dashboard_quota() {
  * @since 3.8.0
  *
  */
-function dash_add_new_right_now() {
+function dashboard_add_new_right_now() {
 	remove_meta_box( 'dashboard_right_now', 'dashboard', 'side' );
 	add_meta_box(
 		'dash-right-now',
 		'Site Content',
-		'dash_new_right_now',
+		'dashboard_new_right_now',
 		'dashboard',
 		'normal',
 		'high'
 	);
 	remove_action( 'activity_box_end', 'wp_dashboard_quota' );
-	add_action( 'activity_box_end', 'dash_new_dashboard_quota' );
+	add_action( 'activity_box_end', 'dashboard_new_dashboard_quota' );
 }
-add_action( 'wp_dashboard_setup', 'dash_add_new_right_now' );
+add_action( 'wp_dashboard_setup', 'dashboard_add_new_right_now' );
 
 /**
  * Renders new slimmed down Right Now widget
@@ -86,7 +86,7 @@ add_action( 'wp_dashboard_setup', 'dash_add_new_right_now' );
  * @since 3.8.0
  *
  */
-function dash_new_right_now() { 
+function dashboard_new_right_now() { 
 	$theme = wp_get_theme();
 	if ( current_user_can( 'switch_themes' ) )
 		$theme_name = sprintf( '<a href="themes.php">%1$s</a>', $theme->display('Name') );

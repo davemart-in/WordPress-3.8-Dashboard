@@ -124,7 +124,7 @@ function wp_dashboard_quick_draft( $error_msg=false ) {
  * @since 3.8.0
  *
  */
-function wp_dashboard_recent_quickdrafts( $drafts = false ) {
+function wp_dashboard_recent_quickdrafts() {
 	if ( !$drafts ) {
 		$query_args = array(
 			'post_type'      => 'post',
