@@ -21,6 +21,12 @@ remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );
 // Remove Recent Comments
 remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
 
+// Columns option to be eliminated from core
+//if ( is_user_admin() )  
+//	add_screen_option('layout_columns', array('max' => 4, 'default' => 1) );  
+//else  
+//	add_screen_option('layout_columns', array('max' => 4, 'default' => 2) );  
+
 wp_enqueue_script( 'dashboard' );
 if ( current_user_can( 'edit_theme_options' ) )
 	wp_enqueue_script( 'customize-loader' );
