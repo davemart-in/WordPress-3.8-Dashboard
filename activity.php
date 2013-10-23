@@ -82,7 +82,9 @@ function dash_show_published_posts( $args ) {
 		'post_status'    => $args['status'],
 		'orderby'        => 'date',
 		'order'          => $args['order'],
-		'posts_per_page' => intval( $args['max'] )
+		'posts_per_page' => intval( $args['max'] ),
+		'no_found_rows'  => true,
+		'cache_results'  => false
 	);
 	$query_args = apply_filters( 'dash_show_published_posts_query_args', $query_args );
 	$posts = new WP_Query( $query_args );
