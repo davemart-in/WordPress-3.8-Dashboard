@@ -125,19 +125,19 @@ function wp_dashboard_quick_draft( $error_msg=false ) {
  *
  */
 function wp_dashboard_recent_quickdrafts() {
-	if ( !$drafts ) {
-		$query_args = array(
-			'post_type'      => 'post',
-			'post_status'    => 'draft',
-			'author'         => $GLOBALS['current_user']->ID,
-			'posts_per_page' => 4,
-			'orderby'        => 'modified',
-			'order'          => 'DESC'
-		);
-		$query_args = apply_filters( 'dash_recent_quickdrafts_query_args', $query_args );
-		$drafts_query = new WP_Query( $query_args );
-		$drafts =& $drafts_query->posts;
-	}
+
+	$query_args = array(
+		'post_type'      => 'post',
+		'post_status'    => 'draft',
+		'author'         => $GLOBALS['current_user']->ID,
+		'posts_per_page' => 4,
+		'orderby'        => 'modified',
+		'order'          => 'DESC'
+	);
+	$query_args = apply_filters( 'dash_recent_quickdrafts_query_args', $query_args );
+	$drafts_query = new WP_Query( $query_args );
+	$drafts =& $drafts_query->posts;
+
 
 	if ( $drafts && is_array( $drafts ) ) {
 		$list = array();
