@@ -14,7 +14,8 @@
 	padding: 8px 12px 0;
 }
 
-#dashboard_quick_draft .inside {
+#dashboard-widgets .postbox .inside {
+	margin-bottom: 10px;
 	padding: 0;
 }
 
@@ -40,7 +41,7 @@ form.initial-form.quickpress-open input#title {
 	height: auto;
 }
 
-#dashboard_quick_draft input, 
+#dashboard_quick_draft input,
 #dashboard_quick_draft textarea {
 	box-sizing: border-box;
 	-moz-box-sizing:border-box;
@@ -173,7 +174,7 @@ form.initial-form.quickpress-open input#title {
 	height: auto;
 }
 
-#dashboard_quick_draft input, 
+#dashboard_quick_draft input,
 #dashboard_quick_draft textarea {
 	box-sizing: border-box;
 	-moz-box-sizing:border-box;
