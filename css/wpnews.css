@@ -5,7 +5,7 @@
 
 #dashboard_rss .widget-loading,
 #dashboard_rss .dashboard-widget-control-form {
-	padding: 0 12px 12px;
+	padding: 12px 12px 0;
 }
 
 body #dashboard-widgets .postbox form .submit {
@@ -33,6 +33,7 @@ body #dashboard-widgets .postbox form .submit {
 
 .rss-widget:last-child {
 	border-bottom: none;
+	padding-bottom: 0;
 }
 
 .rss-widget a {

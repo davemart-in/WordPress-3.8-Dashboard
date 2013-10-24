@@ -89,12 +89,11 @@
 .activity-block {
 	border-bottom: 1px solid #eee;
 	overflow: hidden;
-	padding: 8px 12px;
+	padding: 8px 12px 0;
 }
 
 .activity-block:last-child {
 	border-bottom: none;
-	padding-bottom: 10px;
 }
 
 .activity-block .subsubsub li {
